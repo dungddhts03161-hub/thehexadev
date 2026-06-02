@@ -1,1049 +1,1180 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE HEXADEV – Thời Trang</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StyleShop – Hệ Thống Quản Lý Cửa Hàng Quần Áo | The Hexadev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- ════════════════════════════════════════
-     PAGE: ĐĂNG NHẬP
-════════════════════════════════════════ -->
-<div class="page active" id="page-login">
-<div class="auth-wrap">
-  <div class="auth-left">
-    <div class="auth-logo-big">
-      <div class="logo-icon-big">
-        <svg viewBox="0 0 52 52" fill="none">
-          <path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/>
-          <path d="M26 16c-5.5 0-10 4-10 10 0 3.5 1.8 6.5 4.5 8.3V30h-1.5a1 1 0 010-2H20v-2h-1a1 1 0 010-2h1v-.5c0-3.3 2.7-6 6-6s6 2.7 6 6V24h1a1 1 0 010 2h-1v2h1.5a1 1 0 010 2H32v4.3c2.7-1.8 4.5-4.8 4.5-8.3 0-6-4.5-10-10.5-10z" fill="#e8598a"/>
-          <circle cx="26" cy="26" r="4" fill="#f8bbd0" stroke="#e8598a" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h1>THE HEXADEV</h1>
-      <p>Thời Trang Nam & Nữ</p>
-    </div>
-    <div class="auth-tagline">
-      <h2>Phong cách của bạn,<br>câu chuyện của bạn.</h2>
-      <p>Khám phá bộ sưu tập thời trang mới nhất mỗi ngày.</p>
-    </div>
-  </div>
-  <div class="auth-right">
-    <div style="width:100%; max-width: 380px;">
-      <h2>Đăng nhập</h2>
-      <p class="sub">Chào mừng trở lại với THE HEXADEV</p>
-      <div class="role-tabs">
-        <div class="role-tab active" onclick="setRole('customer',this)">Khách hàng</div>
-        <div class="role-tab" onclick="setRole('staff',this)">Nhân viên</div>
-        <div class="role-tab" onclick="setRole('admin',this)">Quản lý</div>
-        <div class="role-tab" onclick="setRole('owner',this)">Chủ cửa hàng</div>
-      </div>
-      <div class="form-group">
-        <label>Email / Số điện thoại</label>
-        <input type="text" placeholder="Nhập email hoặc số điện thoại">
-      </div>
-      <div class="form-group">
-        <label>Mật khẩu</label>
-        <input type="password" placeholder="Nhập mật khẩu">
-      </div>
-      <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;">
-        <a style="font-size:0.83rem; color:var(--pink-500); cursor:pointer;">Quên mật khẩu?</a>
-      </div>
-      <button class="btn-primary" onclick="doLogin()">Đăng nhập</button>
-      <div class="auth-switch">
-        Chưa có tài khoản? <a onclick="navigate('page-register')">Tạo tài khoản ngay</a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+<div class="page active" id="pageLanding">
 
-<!-- ════════════════════════════════════════
-     PAGE: ĐĂNG KÝ
-════════════════════════════════════════ -->
-<div class="page" id="page-register">
-<div class="auth-wrap">
-  <div class="auth-left">
-    <div class="auth-logo-big">
-      <div class="logo-icon-big">
-        <svg viewBox="0 0 52 52" fill="none">
-          <path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/>
-          <path d="M26 16c-5.5 0-10 4-10 10 0 3.5 1.8 6.5 4.5 8.3V30h-1.5a1 1 0 010-2H20v-2h-1a1 1 0 010-2h1v-.5c0-3.3 2.7-6 6-6s6 2.7 6 6V24h1a1 1 0 010 2h-1v2h1.5a1 1 0 010 2H32v4.3c2.7-1.8 4.5-4.8 4.5-8.3 0-6-4.5-10-10.5-10z" fill="#e8598a"/>
-          <circle cx="26" cy="26" r="4" fill="#f8bbd0" stroke="#e8598a" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <h1>THE HEXADEV</h1>
-      <p>Thời Trang Nam & Nữ</p>
-    </div>
-    <div class="auth-tagline">
-      <h2>Tham gia cùng chúng tôi!</h2>
-      <p>Hàng ngàn sản phẩm đang chờ bạn khám phá.</p>
-    </div>
-  </div>
-  <div class="auth-right">
-    <div style="width:100%; max-width: 380px;">
-      <h2>Tạo tài khoản</h2>
-      <p class="sub">Đăng ký để bắt đầu mua sắm</p>
-      <div class="form-row" style="margin-bottom:1.2rem;">
-        <div class="form-group" style="margin-bottom:0;">
-          <label>Họ</label>
-          <input type="text" placeholder="Nguyễn">
+<!-- ═══ NAV ═══ -->
+<nav id="navbar">
+<a class="nav-logo" href="#" onclick="goLanding(); return false;">
+<div class="nav-logo-icon">👗</div>
+      StyleShop
+    </a>
+<ul class="nav-links">
+<li><a href="#features">Tính năng</a></li>
+<li><a href="#how">Quy trình</a></li>
+<li><a href="#roles">Người dùng</a></li>
+<li><a href="#team">Nhóm</a></li>
+<li><a href="#footer">Liên hệ</a></li>
+<li><a class="nav-cta" href="#auth" onclick="goAuth('register'); return false;">Dùng thử ngay</a></li>
+</ul>
+</nav>
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+<div class="hero-bg"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<div class="particles" id="particles"></div>
+<div class="hero-inner">
+<div class="hero-left">
+<div class="hero-badge">
+<span class="badge-dot"></span>
+          Dự án Software Engineering · The Hexadev
         </div>
-        <div class="form-group" style="margin-bottom:0;">
-          <label>Tên</label>
-          <input type="text" placeholder="An">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="email@example.com">
-      </div>
-      <div class="form-group">
-        <label>Số điện thoại</label>
-        <input type="tel" placeholder="0912 345 678">
-      </div>
-      <div class="form-group">
-        <label>Mật khẩu</label>
-        <input type="password" placeholder="Tối thiểu 8 ký tự">
-      </div>
-      <div class="form-group">
-        <label>Xác nhận mật khẩu</label>
-        <input type="password" placeholder="Nhập lại mật khẩu">
-      </div>
-      <button class="btn-primary" onclick="navigate('page-customer-shop')">Tạo tài khoản</button>
-      <div class="auth-switch">
-        Đã có tài khoản? <a onclick="navigate('page-login')">Đăng nhập</a>
-      </div>
-    </div>
-  </div>
+<h1 class="hero-title">
+          Quản lý shop<br/>thời trang <span class="highlight">thông minh</span>
+</h1>
+<p class="hero-desc">
+          Hệ thống quản lý cửa hàng quần áo online toàn diện — từ sản phẩm, đơn hàng đến doanh thu, tất cả trong một nền tảng duy nhất.
+        </p>
+<div class="hero-btns">
+<a class="btn-primary" href="#features">
+            ✨ Khám phá tính năng
+          </a>
+<a class="btn-secondary" href="#team">
+            👥 Về nhóm chúng tôi
+          </a>
 </div>
+</div>
+<div class="hero-right">
+<!-- Floating stat cards -->
+<div class="float-card float-card-1">
+<div class="float-label">Doanh thu hôm nay</div>
+<div class="float-value">12.4 triệu ₫</div>
+</div>
+<div class="float-card float-card-2">
+<div class="float-label">Đơn đang xử lý</div>
+<div class="float-value">24 đơn hàng</div>
+</div>
+<!-- Mascot -->
+<div class="mascot-wrap">
+<svg class="mascot-svg" viewbox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+<!-- shadow -->
+<ellipse cx="180" cy="408" fill="#1BBFA0" opacity="0.15" rx="80" ry="12"></ellipse>
+<!-- body / dress -->
+<ellipse cx="180" cy="300" fill="#1BBFA0" rx="72" ry="78"></ellipse>
+<!-- dress highlight -->
+<ellipse cx="160" cy="270" fill="#5DD6BC" opacity="0.4" rx="28" ry="40"></ellipse>
+<!-- dress bottom ruffle -->
+<path d="M108 355 Q130 375 155 358 Q175 378 200 358 Q222 378 252 355 Q230 380 180 382 Q130 382 108 355Z" fill="#0D9980"></path>
+<!-- collar / shirt detail -->
+<path d="M155 238 Q180 252 205 238 L200 260 Q180 270 160 260Z" fill="#E8FAF6"></path>
+<!-- arms -->
+<!-- left arm holding hanger -->
+<path d="M108 280 Q75 265 62 285 Q58 300 75 305 Q90 308 108 295Z" fill="#1BBFA0"></path>
+<!-- right arm waving -->
+<path d="M252 270 Q285 250 298 268 Q308 285 294 295 Q278 305 260 292Z" fill="#1BBFA0"></path>
+<!-- right hand wave fingers hint -->
+<ellipse cx="300" cy="278" fill="#FDDCBD" rx="10" ry="7" transform="rotate(-20,300,278)"></ellipse>
+<!-- left hand holding hanger -->
+<ellipse cx="66" cy="292" fill="#FDDCBD" rx="10" ry="8"></ellipse>
+<!-- clothes hanger in left hand -->
+<line stroke="#07705E" stroke-linecap="round" stroke-width="2.5" x1="66" x2="66" y1="287" y2="255"></line>
+<path d="M50 255 Q66 238 82 255" fill="none" stroke="#07705E" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="66" cy="238" fill="#07705E" r="3.5"></circle>
+<!-- tiny shirt on hanger -->
+<path d="M54 255 Q54 265 58 268 Q66 270 74 268 Q78 265 78 255Z" fill="#FFD93D" opacity="0.9"></path>
+<path d="M54 255 Q50 250 54 247 L58 252" fill="#FFD93D" opacity="0.9"></path>
+<path d="M78 255 Q82 250 78 247 L74 252" fill="#FFD93D" opacity="0.9"></path>
+<!-- neck -->
+<rect fill="#FDDCBD" height="22" rx="10" width="20" x="170" y="218"></rect>
+<!-- head -->
+<ellipse cx="180" cy="185" fill="#FDDCBD" rx="58" ry="60"></ellipse>
+<!-- hair bun top -->
+<ellipse cx="180" cy="128" fill="#3D2010" rx="42" ry="28"></ellipse>
+<ellipse cx="180" cy="135" fill="#3D2010" rx="46" ry="52"></ellipse>
+<!-- hair sides -->
+<ellipse cx="135" cy="175" fill="#3D2010" rx="14" ry="22"></ellipse>
+<ellipse cx="225" cy="175" fill="#3D2010" rx="14" ry="22"></ellipse>
+<!-- hair top highlight -->
+<ellipse cx="168" cy="140" fill="#5A3018" opacity="0.6" rx="16" ry="10"></ellipse>
+<!-- hair bun scrunchie -->
+<ellipse cx="210" cy="136" fill="#FF6B6B" rx="10" ry="10"></ellipse>
+<ellipse cx="210" cy="136" fill="#FF9999" rx="6" ry="6"></ellipse>
+<circle cx="210" cy="136" fill="#FF6B6B" r="3"></circle>
+<!-- face -->
+<!-- blush cheeks -->
+<ellipse cx="148" cy="196" fill="#FFBCAD" opacity="0.55" rx="16" ry="10"></ellipse>
+<ellipse cx="212" cy="196" fill="#FFBCAD" opacity="0.55" rx="16" ry="10"></ellipse>
+<!-- eyes closed happy crescent -->
+<path d="M162 177 Q170 170 178 177" fill="none" stroke="#3D2010" stroke-linecap="round" stroke-width="3"></path>
+<path d="M182 177 Q190 170 198 177" fill="none" stroke="#3D2010" stroke-linecap="round" stroke-width="3"></path>
+<!-- eyelashes -->
+<line stroke="#3D2010" stroke-linecap="round" stroke-width="1.5" x1="163" x2="160" y1="176" y2="170"></line>
+<line stroke="#3D2010" stroke-linecap="round" stroke-width="1.5" x1="167" x2="165" y1="173" y2="167"></line>
+<line stroke="#3D2010" stroke-linecap="round" stroke-width="1.5" x1="197" x2="200" y1="176" y2="170"></line>
+<line stroke="#3D2010" stroke-linecap="round" stroke-width="1.5" x1="193" x2="195" y1="173" y2="167"></line>
+<!-- nose tiny -->
+<path d="M178 190 Q180 194 182 190" fill="none" stroke="#E8A882" stroke-linecap="round" stroke-width="1.5"></path>
+<!-- big smile with teeth -->
+<path d="M163 202 Q180 220 197 202" fill="none" stroke="#3D2010" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M167 206 Q180 218 193 206" fill="white" opacity="0.8"></path>
+<!-- small star sparkles around -->
+<path d="M80 150 L83 142 L86 150 L94 153 L86 156 L83 164 L80 156 L72 153Z" fill="#FFD93D" opacity="0.8"></path>
+<path d="M268 120 L270 115 L272 120 L277 122 L272 124 L270 129 L268 124 L263 122Z" fill="#5DD6BC" opacity="0.9"></path>
+<path d="M290 200 L292 196 L294 200 L298 202 L294 204 L292 208 L290 204 L286 202Z" fill="#FF6B6B" opacity="0.7"></path>
+<!-- small hearts -->
+<path d="M60 210 Q60 204 66 204 Q72 204 72 210 Q72 216 60 222 Q48 216 48 210 Q48 204 54 204 Q60 204 60 210Z" fill="#FF9999" opacity="0.6" transform="scale(0.45) translate(88,250)"></path>
+<!-- tiny stars dots -->
+<circle cx="96" cy="120" fill="#FFD93D" opacity="0.7" r="3"></circle>
+<circle cx="260" cy="155" fill="#5DD6BC" opacity="0.6" r="4"></circle>
+<circle cx="305" cy="165" fill="#FF9999" opacity="0.7" r="2.5"></circle>
+<!-- legs -->
+<rect fill="#1BBFA0" height="36" rx="11" width="22" x="152" y="370"></rect>
+<rect fill="#1BBFA0" height="36" rx="11" width="22" x="186" y="370"></rect>
+<!-- shoes -->
+<ellipse cx="163" cy="406" fill="#07705E" rx="17" ry="9"></ellipse>
+<ellipse cx="197" cy="406" fill="#07705E" rx="17" ry="9"></ellipse>
+<!-- shoe highlight -->
+<ellipse cx="157" cy="403" fill="#0D9980" opacity="0.6" rx="7" ry="4"></ellipse>
+<ellipse cx="191" cy="403" fill="#0D9980" opacity="0.6" rx="7" ry="4"></ellipse>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ STATS ═══ -->
+<section id="stats">
+<div class="stats-inner">
+<div class="stat-item reveal">
+<span class="stat-icon">👕</span>
+<span class="stat-num" data-target="300">0</span>
+<span class="stat-name">Sản phẩm quản lý</span>
+</div>
+<div class="stat-item reveal reveal-delay-1">
+<span class="stat-icon">📦</span>
+<span class="stat-num" data-target="4">0</span>
+<span class="stat-name">Loại vai trò người dùng</span>
+</div>
+<div class="stat-item reveal reveal-delay-2">
+<span class="stat-icon">⚡</span>
+<span class="stat-num" data-target="10">0</span>
+<span class="stat-name">Chức năng chính</span>
+</div>
+<div class="stat-item reveal reveal-delay-3">
+<span class="stat-icon">👨‍💻</span>
+<span class="stat-num" data-target="6">0</span>
+<span class="stat-name">Thành viên nhóm</span>
+</div>
+</div>
+</section>
+<!-- ═══ FEATURES ═══ -->
+<section id="features">
+<div style="max-width:1100px; margin:0 auto; padding:0;">
+<div class="reveal">
+<span class="section-label">✦ Tính năng hệ thống</span>
+<h2 class="section-title">Đầy đủ chức năng,<br/>dễ dùng cho mọi người</h2>
+<p class="section-sub">Từ khách hàng mua sắm đến chủ shop theo dõi doanh thu — hệ thống phục vụ trọn vẹn mọi nhu cầu.</p>
+</div>
+<div class="features-grid">
+<div class="feat-card reveal reveal-delay-1">
+<div class="feat-icon">🛒</div>
+<div class="feat-title">Giỏ hàng &amp; Đặt hàng</div>
+<div class="feat-desc">Khách hàng dễ dàng thêm sản phẩm, chọn size/màu và đặt hàng trực tuyến chỉ trong vài thao tác.</div>
+</div>
+<div class="feat-card reveal reveal-delay-2">
+<div class="feat-icon">🔍</div>
+<div class="feat-title">Tìm kiếm sản phẩm</div>
+<div class="feat-desc">Tìm kiếm nhanh theo tên, danh mục (áo, quần, váy...) với bộ lọc thông minh.</div>
+</div>
+<div class="feat-card reveal reveal-delay-3">
+<div class="feat-icon">📊</div>
+<div class="feat-title">Quản lý đơn hàng</div>
+<div class="feat-desc">Theo dõi trạng thái đơn hàng theo thời gian thực: chờ xác nhận → đang giao → hoàn thành.</div>
+</div>
+<div class="feat-card reveal reveal-delay-1">
+<div class="feat-icon">📦</div>
+<div class="feat-title">Quản lý kho</div>
+<div class="feat-desc">Theo dõi số lượng tồn kho theo từng size và màu sắc, tự động cập nhật khi có đơn hàng.</div>
+</div>
+<div class="feat-card reveal reveal-delay-2">
+<div class="feat-icon">👥</div>
+<div class="feat-title">Quản lý nhân viên</div>
+<div class="feat-desc">Phân quyền Admin / Staff rõ ràng, kiểm soát thao tác và bảo mật thông tin hệ thống.</div>
+</div>
+<div class="feat-card reveal reveal-delay-3">
+<div class="feat-icon">📈</div>
+<div class="feat-title">Báo cáo &amp; Thống kê</div>
+<div class="feat-desc">Xem doanh thu theo ngày/tháng, sản phẩm bán chạy, số lượng đơn hàng trực quan.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ HOW IT WORKS ═══ -->
+<section id="how">
+<div class="how-inner">
+<div class="how-title-block text-center reveal">
+<span class="section-label">✦ Quy trình</span>
+<h2 class="section-title" style="text-align:center">Mua sắm đơn giản<br/>chỉ 4 bước</h2>
+<p class="section-sub" style="margin: 0 auto; text-align:center">Trải nghiệm mua hàng mượt mà từ lúc xem sản phẩm đến khi nhận hàng.</p>
+</div>
+<div class="steps-grid">
+<div class="step-item reveal reveal-delay-1">
+<div class="step-num">1</div>
+<span class="step-icon">🔎</span>
+<div class="step-name">Tìm kiếm sản phẩm</div>
+<p class="step-desc">Khách hàng đăng nhập và tìm sản phẩm theo tên hoặc danh mục yêu thích.</p>
+</div>
+<div class="step-item reveal reveal-delay-2">
+<div class="step-num">2</div>
+<span class="step-icon">🛍️</span>
+<div class="step-name">Thêm giỏ hàng</div>
+<p class="step-desc">Chọn size, màu sắc và thêm vào giỏ. Có thể cập nhật số lượng dễ dàng.</p>
+</div>
+<div class="step-item reveal reveal-delay-3">
+<div class="step-num">3</div>
+<span class="step-icon">📋</span>
+<div class="step-name">Xác nhận đơn hàng</div>
+<p class="step-desc">Nhân viên xem và xác nhận đơn, cập nhật trạng thái xử lý và giao hàng.</p>
+</div>
+<div class="step-item reveal reveal-delay-4">
+<div class="step-num">4</div>
+<span class="step-icon">🎉</span>
+<div class="step-name">Nhận hàng thành công</div>
+<p class="step-desc">Khách nhận hàng, hệ thống cập nhật lịch sử mua hàng và tồn kho tự động.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ ROLES ═══ -->
+<section id="roles">
+<div class="roles-inner">
+<div class="reveal">
+<span class="section-label">✦ Phân quyền hệ thống</span>
+<h2 class="section-title">4 vai trò,<br/>1 hệ thống thống nhất</h2>
+<p class="section-sub">Mỗi người dùng có quyền hạn riêng, đảm bảo bảo mật và vận hành trơn tru.</p>
+</div>
+<div class="roles-grid">
+<div class="role-card reveal reveal-delay-1">
+<span class="role-emoji">👑</span>
+<div class="role-name">Chủ shop</div>
+<div class="role-sub">Owner / Super Admin</div>
+<ul class="role-perms">
+<li><span class="check">✓</span>Xem báo cáo doanh thu</li>
+<li><span class="check">✓</span>Thống kê kinh doanh</li>
+<li><span class="check">✓</span>Phân quyền hệ thống</li>
+<li><span class="check">✓</span>Toàn quyền dữ liệu</li>
+</ul>
+</div>
+<div class="role-card reveal reveal-delay-2">
+<span class="role-emoji">🛠️</span>
+<div class="role-name">Quản lý</div>
+<div class="role-sub">Store Manager / Admin</div>
+<ul class="role-perms">
+<li><span class="check">✓</span>Quản lý sản phẩm</li>
+<li><span class="check">✓</span>Quản lý nhân viên</li>
+<li><span class="check">✓</span>Kiểm soát tồn kho</li>
+<li><span class="check">✓</span>Xem doanh thu ngày</li>
+</ul>
+</div>
+<div class="role-card reveal reveal-delay-3">
+<span class="role-emoji">👨‍💼</span>
+<div class="role-name">Nhân viên</div>
+<div class="role-sub">Sales Staff</div>
+<ul class="role-perms">
+<li><span class="check">✓</span>Xác nhận đơn hàng</li>
+<li><span class="check">✓</span>Cập nhật trạng thái</li>
+<li><span class="check">✓</span>Xử lý thanh toán</li>
+<li><span class="check">✓</span>Quản lý đơn phụ trách</li>
+</ul>
+</div>
+<div class="role-card reveal reveal-delay-4">
+<span class="role-emoji">🛒</span>
+<div class="role-name">Khách hàng</div>
+<div class="role-sub">Customer</div>
+<ul class="role-perms">
+<li><span class="check">✓</span>Đăng ký / Đăng nhập</li>
+<li><span class="check">✓</span>Tìm &amp; xem sản phẩm</li>
+<li><span class="check">✓</span>Thêm giỏ &amp; đặt hàng</li>
+<li><span class="check">✓</span>Xem lịch sử mua</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ TEAM ═══ -->
+<section id="team">
+<div class="team-inner">
+<div class="team-title-block reveal">
+<span class="section-label">✦ Nhóm phát triển</span>
+<h2 class="section-title">The Hexadev 🚀</h2>
+<p class="section-sub">6 thành viên — 1 đội ngũ đam mê Software Engineering, cùng nhau xây dựng hệ thống quản lý cửa hàng thời trang hiện đại.</p>
+</div>
+<div class="team-grid">
+<!-- Dung - Nữ - mc-1 teal -->
+<div class="member-card mc-1 reveal reveal-delay-1">
+<div class="member-avatar">
+<svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" fill="#E0FAF5" r="40"></circle>
+<!-- hair back -->
+<ellipse cx="40" cy="25" fill="#5ABFA0" rx="16" ry="17"></ellipse>
+<!-- face -->
+<circle cx="40" cy="30" fill="#FDDCBD" r="13"></circle>
+<!-- hair front long -->
+<path d="M27 28 Q24 52 26 58 Q30 50 30 44" fill="#5ABFA0"></path>
+<path d="M53 28 Q56 52 54 58 Q50 50 50 44" fill="#5ABFA0"></path>
+<path d="M28 26 Q40 16 52 26 Q50 22 40 20 Q30 22 28 26Z" fill="#3DA88A"></path>
+<!-- bangs -->
+<path d="M28 26 Q33 22 40 23 Q47 22 52 26 Q46 24 40 25 Q34 24 28 26Z" fill="#3DA88A"></path>
+<!-- dress / top -->
+<path d="M25 62 Q27 50 30 48 Q34 46 40 46 Q46 46 50 48 Q53 50 55 62 Z" fill="#1BBFA0"></path>
+<!-- collar v -->
+<path d="M37 48 L40 54 L43 48" fill="white" opacity="0.5"></path>
+<!-- eyes -->
+<ellipse cx="36" cy="29" fill="#3A2820" rx="2" ry="2.2"></ellipse>
+<ellipse cx="44" cy="29" fill="#3A2820" rx="2" ry="2.2"></ellipse>
+<circle cx="36.7" cy="28.2" fill="white" r="0.7"></circle>
+<circle cx="44.7" cy="28.2" fill="white" r="0.7"></circle>
+<!-- lashes -->
+<path d="M34.5 27.5 Q36 26.5 37.5 27.5" fill="none" stroke="#3A2820" stroke-width="0.8"></path>
+<path d="M42.5 27.5 Q44 26.5 45.5 27.5" fill="none" stroke="#3A2820" stroke-width="0.8"></path>
+<!-- nose -->
+<path d="M39.5 32 Q40 33.5 40.5 32" fill="none" stroke="#C9956A" stroke-width="0.8"></path>
+<!-- smile -->
+<path d="M37 35.5 Q40 38 43 35.5" fill="none" stroke="#C9956A" stroke-linecap="round" stroke-width="1.2"></path>
+<!-- blush -->
+<ellipse cx="34" cy="33" fill="#FFB5A0" opacity="0.5" rx="3" ry="1.8"></ellipse>
+<ellipse cx="46" cy="33" fill="#FFB5A0" opacity="0.5" rx="3" ry="1.8"></ellipse>
+</svg>
+</div>
+<div class="member-name">Dương Đoàn Hoàng Dung</div>
+<div class="member-id">TS03161</div>
+<span class="member-role-tag">Thu thập phỏng vấn</span>
+</div>
+<!-- Khang - Nam - mc-2 blue -->
+<div class="member-card mc-2 reveal reveal-delay-2">
+<div class="member-avatar">
+<svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" fill="#EAF0FF" r="40"></circle>
+<!-- hair -->
+<ellipse cx="40" cy="24" fill="#3A2820" rx="14" ry="12"></ellipse>
+<path d="M27 28 Q26 20 40 18 Q54 20 53 28 Q50 22 40 21 Q30 22 27 28Z" fill="#2C1F16"></path>
+<!-- face -->
+<circle cx="40" cy="30" fill="#FDDCBD" r="13"></circle>
+<!-- shirt -->
+<path d="M25 62 Q27 50 30 48 Q34 46 40 46 Q46 46 50 48 Q53 50 55 62 Z" fill="#5B8CFF"></path>
+<!-- collar -->
+<path d="M36 48 L40 52 L44 48" fill="white" opacity="0.6"></path>
+<!-- eyes -->
+<ellipse cx="36" cy="29" fill="#2C1F16" rx="2.1" ry="2.1"></ellipse>
+<ellipse cx="44" cy="29" fill="#2C1F16" rx="2.1" ry="2.1"></ellipse>
+<circle cx="36.7" cy="28.3" fill="white" r="0.7"></circle>
+<circle cx="44.7" cy="28.3" fill="white" r="0.7"></circle>
+<!-- eyebrows straight -->
+<path d="M34 26.5 Q36 25.8 38 26.5" fill="none" stroke="#2C1F16" stroke-linecap="round" stroke-width="1.2"></path>
+<path d="M42 26.5 Q44 25.8 46 26.5" fill="none" stroke="#2C1F16" stroke-linecap="round" stroke-width="1.2"></path>
+<!-- nose -->
+<path d="M39.5 32.5 Q40 34 40.5 32.5" fill="none" stroke="#C9956A" stroke-width="0.9"></path>
+<!-- mouth slight smile -->
+<path d="M37.5 36 Q40 38.5 42.5 36" fill="none" stroke="#C9956A" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<div class="member-name">Nguyễn Lâm Phú Khang</div>
+<div class="member-id">TS03231</div>
+<span class="member-role-tag">Viết tài liệu</span>
+</div>
+<!-- Huyền - Nữ - mc-3 coral -->
+<div class="member-card mc-3 reveal reveal-delay-3">
+<div class="member-avatar">
+<svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" fill="#FFF0EC" r="40"></circle>
+<!-- hair back wavy -->
+<ellipse cx="40" cy="26" fill="#C17F3A" rx="16" ry="16"></ellipse>
+<path d="M24 38 Q22 55 25 62 Q28 54 28 46" fill="#C17F3A"></path>
+<path d="M56 38 Q58 55 55 62 Q52 54 52 46" fill="#C17F3A"></path>
+<!-- face -->
+<circle cx="40" cy="30" fill="#FDDCBD" r="13"></circle>
+<!-- hair front -->
+<path d="M27 26 Q40 15 53 26 Q48 20 40 19 Q32 20 27 26Z" fill="#A86A2A"></path>
+<!-- side parting -->
+<path d="M28 24 Q32 20 36 22" fill="none" stroke="#A86A2A" stroke-width="1"></path>
+<!-- dress -->
+<path d="M25 62 Q27 50 30 48 Q34 46 40 46 Q46 46 50 48 Q53 50 55 62 Z" fill="#FF8C6B"></path>
+<!-- necklace dots -->
+<circle cx="38" cy="48" fill="#FFD93D" r="1.2"></circle>
+<circle cx="40" cy="47.5" fill="#FFD93D" r="1.2"></circle>
+<circle cx="42" cy="48" fill="#FFD93D" r="1.2"></circle>
+<!-- eyes with lashes -->
+<ellipse cx="36" cy="29" fill="#3A2820" rx="2.1" ry="2.3"></ellipse>
+<ellipse cx="44" cy="29" fill="#3A2820" rx="2.1" ry="2.3"></ellipse>
+<circle cx="36.7" cy="28.2" fill="white" r="0.7"></circle>
+<circle cx="44.7" cy="28.2" fill="white" r="0.7"></circle>
+<path d="M34 27 Q36 25.5 38 27" fill="none" stroke="#3A2820" stroke-width="0.9"></path>
+<path d="M42 27 Q44 25.5 46 27" fill="none" stroke="#3A2820" stroke-width="0.9"></path>
+<!-- nose -->
+<path d="M39.5 32 Q40 33.5 40.5 32" fill="none" stroke="#C9956A" stroke-width="0.8"></path>
+<!-- smile -->
+<path d="M37 35.5 Q40 38.5 43 35.5" fill="none" stroke="#C9956A" stroke-linecap="round" stroke-width="1.2"></path>
+<!-- blush -->
+<ellipse cx="34" cy="33" fill="#FFB5A0" opacity="0.5" rx="3" ry="1.8"></ellipse>
+<ellipse cx="46" cy="33" fill="#FFB5A0" opacity="0.5" rx="3" ry="1.8"></ellipse>
+</svg>
+</div>
+<div class="member-name">Trần Ngọc Diễm Huyền</div>
+<div class="member-id">TS03223</div>
+<span class="member-role-tag">Bảng yêu cầu</span>
+</div>
+<!-- Đạt - Nam - mc-4 purple -->
+<div class="member-card mc-4 reveal reveal-delay-1">
+<div class="member-avatar">
+<svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" fill="#F3EEFF" r="40"></circle>
+<!-- hair short -->
+<ellipse cx="40" cy="23" fill="#1A1008" rx="14" ry="11"></ellipse>
+<path d="M26 28 Q26 20 40 18 Q54 20 54 28 Q50 22 40 21 Q30 22 26 28Z" fill="#0D0804"></path>
+<!-- undercut sides -->
+<path d="M26 28 Q25 32 27 34" fill="none" stroke="#1A1008" stroke-width="2"></path>
+<path d="M54 28 Q55 32 53 34" fill="none" stroke="#1A1008" stroke-width="2"></path>
+<!-- face -->
+<circle cx="40" cy="30" fill="#F5C89A" r="13"></circle>
+<!-- shirt hoodie -->
+<path d="M25 62 Q27 50 30 48 Q34 46 40 46 Q46 46 50 48 Q53 50 55 62 Z" fill="#A78BFA"></path>
+<!-- hood strings -->
+<path d="M38 48 L37 54" opacity="0.6" stroke="white" stroke-width="1"></path>
+<path d="M42 48 L43 54" opacity="0.6" stroke="white" stroke-width="1"></path>
+<!-- eyes -->
+<ellipse cx="36" cy="29.5" fill="#1A1008" rx="2.2" ry="2.1"></ellipse>
+<ellipse cx="44" cy="29.5" fill="#1A1008" rx="2.2" ry="2.1"></ellipse>
+<circle cx="36.8" cy="28.8" fill="white" r="0.7"></circle>
+<circle cx="44.8" cy="28.8" fill="white" r="0.7"></circle>
+<!-- brows -->
+<path d="M33.5 27 Q36 26 38.5 27" fill="none" stroke="#1A1008" stroke-linecap="round" stroke-width="1.3"></path>
+<path d="M41.5 27 Q44 26 46.5 27" fill="none" stroke="#1A1008" stroke-linecap="round" stroke-width="1.3"></path>
+<!-- nose -->
+<path d="M39.2 33 Q40 35 40.8 33" fill="none" stroke="#C9956A" stroke-width="0.9"></path>
+<!-- smile -->
+<path d="M37 36.5 Q40 39 43 36.5" fill="none" stroke="#C9956A" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<div class="member-name">Lê Nguyễn Hoàng Đạt</div>
+<div class="member-id">TS03175</div>
+<span class="member-role-tag">Viết tài liệu</span>
+</div>
+<!-- Khải - Nam - mc-5 amber -->
+<div class="member-card mc-5 reveal reveal-delay-2">
+<div class="member-avatar">
+<svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" fill="#FFF8EA" r="40"></circle>
+<!-- hair wavy top -->
+<ellipse cx="40" cy="23" fill="#6B3A1F" rx="14" ry="12"></ellipse>
+<path d="M26 27 Q26 17 40 16 Q54 17 54 27 Q50 20 40 19 Q30 20 26 27Z" fill="#4A2510"></path>
+<!-- wave in hair -->
+<path d="M27 22 Q30 19 33 22 Q36 19 39 22" fill="none" opacity="0.6" stroke="#4A2510" stroke-width="1.2"></path>
+<!-- face -->
+<circle cx="40" cy="30" fill="#FDDCBD" r="13"></circle>
+<!-- shirt polo -->
+<path d="M25 62 Q27 50 30 48 Q34 46 40 46 Q46 46 50 48 Q53 50 55 62 Z" fill="#F59E0B"></path>
+<!-- polo collar -->
+<rect fill="#E08A00" height="4" rx="1" width="6" x="37" y="46"></rect>
+<!-- eyes -->
+<ellipse cx="36" cy="29.5" fill="#4A2510" rx="2.1" ry="2.1"></ellipse>
+<ellipse cx="44" cy="29.5" fill="#4A2510" rx="2.1" ry="2.1"></ellipse>
+<circle cx="36.7" cy="28.7" fill="white" r="0.7"></circle>
+<circle cx="44.7" cy="28.7" fill="white" r="0.7"></circle>
+<!-- brows -->
+<path d="M34 27 Q36 26 38 27" fill="none" stroke="#4A2510" stroke-linecap="round" stroke-width="1.2"></path>
+<path d="M42 27 Q44 26 46 27" fill="none" stroke="#4A2510" stroke-linecap="round" stroke-width="1.2"></path>
+<!-- nose -->
+<path d="M39.5 32.5 Q40 34.2 40.5 32.5" fill="none" stroke="#C9956A" stroke-width="0.9"></path>
+<!-- mouth -->
+<path d="M37.5 36 Q40 38.5 42.5 36" fill="none" stroke="#C9956A" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<div class="member-name">Nguyễn Quang Khải</div>
+<div class="member-id">TS03226</div>
+<span class="member-role-tag">Viết tài liệu</span>
+</div>
+<!-- Đức - Nam - mc-6 green -->
+<div class="member-card mc-6 reveal reveal-delay-3">
+<div class="member-avatar">
+<svg viewbox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" fill="#E8FAF0" r="40"></circle>
+<!-- glasses frame first (behind hair) -->
+<!-- hair short neat -->
+<ellipse cx="40" cy="23" fill="#2C2014" rx="14" ry="11.5"></ellipse>
+<path d="M26 27 Q26 18 40 17 Q54 18 54 27 Q50 21 40 20 Q30 21 26 27Z" fill="#1A1208"></path>
+<!-- side flat -->
+<path d="M26.5 27 L26 31" fill="none" stroke="#2C2014" stroke-width="2.5"></path>
+<path d="M53.5 27 L54 31" fill="none" stroke="#2C2014" stroke-width="2.5"></path>
+<!-- face -->
+<circle cx="40" cy="30" fill="#FDDCBD" r="13"></circle>
+<!-- glasses -->
+<rect fill="none" height="5.5" rx="2.5" stroke="#444" stroke-width="1.2" width="7" x="33" y="27.5"></rect>
+<rect fill="none" height="5.5" rx="2.5" stroke="#444" stroke-width="1.2" width="7" x="40" y="27.5"></rect>
+<path d="M40 30.5 L40 30.5" stroke="#444" stroke-width="1.2"></path>
+<path d="M26.5 30 L33 30.2" stroke="#444" stroke-width="1.2"></path>
+<path d="M47 30.2 L53.5 30" stroke="#444" stroke-width="1.2"></path>
+<!-- shirt tech tshirt -->
+<path d="M25 62 Q27 50 30 48 Q34 46 40 46 Q46 46 50 48 Q53 50 55 62 Z" fill="#34D399"></path>
+<!-- small logo on shirt -->
+<text fill="white" font-size="7" opacity="0.7" x="38" y="57">{ }</text>
+<!-- eyes behind glasses -->
+<ellipse cx="36.5" cy="30" fill="#2C2014" rx="1.8" ry="1.9"></ellipse>
+<ellipse cx="43.5" cy="30" fill="#2C2014" rx="1.8" ry="1.9"></ellipse>
+<circle cx="37.1" cy="29.3" fill="white" r="0.6"></circle>
+<circle cx="44.1" cy="29.3" fill="white" r="0.6"></circle>
+<!-- brows above glasses -->
+<path d="M34 26.2 Q36.5 25.4 38.5 26.2" fill="none" stroke="#2C2014" stroke-linecap="round" stroke-width="1.2"></path>
+<path d="M41.5 26.2 Q43.5 25.4 46 26.2" fill="none" stroke="#2C2014" stroke-linecap="round" stroke-width="1.2"></path>
+<!-- nose -->
+<path d="M39.5 33 Q40 34.5 40.5 33" fill="none" stroke="#C9956A" stroke-width="0.9"></path>
+<!-- smile -->
+<path d="M37.5 36.5 Q40 39 42.5 36.5" fill="none" stroke="#C9956A" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<div class="member-name">Hồ Anh Đức</div>
+<div class="member-id">TS03062</div>
+<span class="member-role-tag">Viết tài liệu</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ FOOTER ═══ -->
+<footer id="footer">
+<div class="footer-inner">
+<div class="footer-top">
+<div class="footer-brand">
+<a class="nav-logo" href="#" onclick="goLanding(); return false;" style="color:white">
+<div class="nav-logo-icon">👗</div>
+            StyleShop
+          </a>
+<p>Hệ thống quản lý cửa hàng quần áo online — được phát triển bởi nhóm The Hexadev trong khuôn khổ môn Software Engineering.</p>
+<div class="footer-social">
+<a class="social-btn" href="#" onclick="goLanding(); return false;" title="GitHub">GH</a>
+<a class="social-btn" href="https://www.facebook.com/le.at.854089" target="_blank" title="Facebook">FB</a>
+<a class="social-btn" href="#" onclick="goLanding(); return false;" title="Email">✉</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Tính năng</h4>
+<ul>
+<li><a href="#features">Quản lý sản phẩm</a></li>
+<li><a href="#features">Quản lý đơn hàng</a></li>
+<li><a href="#features">Quản lý kho</a></li>
+<li><a href="#features">Báo cáo doanh thu</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Người dùng</h4>
+<ul>
+<li><a href="#roles">Chủ shop (Owner)</a></li>
+<li><a href="#roles">Quản lý (Admin)</a></li>
+<li><a href="#roles">Nhân viên (Staff)</a></li>
+<li><a href="#roles">Khách hàng</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Nhóm</h4>
+<ul>
+<li><a href="#team">The Hexadev</a></li>
+<li><a href="#team">6 thành viên</a></li>
+<li><a href="#team">Ngành Software Eng.</a></li>
+<li><a href="#team">Liên hệ nhóm</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 The Hexadev · StyleShop Management System · Đồ án Software Engineering</p>
+<div class="footer-badge">
+<span style="width:8px;height:8px;background:var(--mint);border-radius:50%;display:inline-block"></span>
+          Built with ❤️ by The Hexadev
+        </div>
+</div>
+</div>
+</footer>
+
+
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE: KHÁCH HÀNG - SHOP
-════════════════════════════════════════ -->
-<div class="page" id="page-customer-shop">
-  <div class="shop-header">
-    <div class="shop-header .brand" style="display:flex; align-items:center; gap:10px;">
-      <div class="logo-icon-sm">
-        <svg viewBox="0 0 52 52" fill="none"><path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/><circle cx="26" cy="26" r="5" fill="#e8598a"/></svg>
-      </div>
-      <span style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--pink-800);">THE HEXADEV</span>
-    </div>
-    <nav class="shop-nav">
-      <a onclick="navigate('page-customer-shop')">Trang chủ</a>
-      <a>Nam</a>
-      <a>Nữ</a>
-      <a>Sale</a>
-      <a onclick="navigate('page-customer-orders')">Đơn hàng</a>
+<div class="page" id="pageAuth">
+<div class="auth-wrapper">
+<!-- LEFT PANEL -->
+<div class="auth-left">
+<button class="left-back" onclick="goLanding()">← Về trang chủ</button>
+<div class="blob blob-a"></div>
+<div class="blob blob-b"></div>
+<div class="left-logo" onclick="goLanding()">
+<div class="left-logo-icon">👗</div>
+<span class="left-logo-name">StyleShop</span>
+</div>
+<!-- Mascot SVG -->
+<div class="left-mascot">
+<svg viewbox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="180" cy="408" fill="#1BBFA0" opacity="0.15" rx="80" ry="12"></ellipse>
+<ellipse cx="180" cy="300" fill="rgba(255,255,255,0.25)" rx="72" ry="78"></ellipse>
+<ellipse cx="160" cy="270" fill="rgba(255,255,255,0.15)" opacity="0.4" rx="28" ry="40"></ellipse>
+<path d="M108 355 Q130 375 155 358 Q175 378 200 358 Q222 378 252 355 Q230 380 180 382 Q130 382 108 355Z" fill="rgba(255,255,255,0.15)"></path>
+<path d="M155 238 Q180 252 205 238 L200 260 Q180 270 160 260Z" fill="rgba(255,255,255,0.4)"></path>
+<path d="M108 280 Q75 265 62 285 Q58 300 75 305 Q90 308 108 295Z" fill="rgba(255,255,255,0.2)"></path>
+<path d="M252 270 Q285 250 298 268 Q308 285 294 295 Q278 305 260 292Z" fill="rgba(255,255,255,0.2)"></path>
+<ellipse cx="300" cy="278" fill="#FDDCBD" rx="10" ry="7" transform="rotate(-20,300,278)"></ellipse>
+<ellipse cx="66" cy="292" fill="#FDDCBD" rx="10" ry="8"></ellipse>
+<line stroke="rgba(255,255,255,0.5)" stroke-linecap="round" stroke-width="2.5" x1="66" x2="66" y1="287" y2="255"></line>
+<path d="M50 255 Q66 238 82 255" fill="none" stroke="rgba(255,255,255,0.5)" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="66" cy="238" fill="rgba(255,255,255,0.6)" r="3.5"></circle>
+<path d="M54 255 Q54 265 58 268 Q66 270 74 268 Q78 265 78 255Z" fill="#FFD93D" opacity="0.9"></path>
+<path d="M54 255 Q50 250 54 247 L58 252" fill="#FFD93D" opacity="0.9"></path>
+<path d="M78 255 Q82 250 78 247 L74 252" fill="#FFD93D" opacity="0.9"></path>
+<rect fill="#FDDCBD" height="22" rx="10" width="20" x="170" y="218"></rect>
+<ellipse cx="180" cy="185" fill="#FDDCBD" rx="58" ry="60"></ellipse>
+<ellipse cx="180" cy="128" fill="#3D2010" rx="42" ry="28"></ellipse>
+<ellipse cx="180" cy="135" fill="#3D2010" rx="46" ry="52"></ellipse>
+<ellipse cx="135" cy="175" fill="#3D2010" rx="14" ry="22"></ellipse>
+<ellipse cx="225" cy="175" fill="#3D2010" rx="14" ry="22"></ellipse>
+<ellipse cx="168" cy="140" fill="#5A3018" opacity="0.6" rx="16" ry="10"></ellipse>
+<ellipse cx="210" cy="136" fill="#FF6B6B" rx="10" ry="10"></ellipse>
+<ellipse cx="210" cy="136" fill="#FF9999" rx="6" ry="6"></ellipse>
+<circle cx="210" cy="136" fill="#FF6B6B" r="3"></circle>
+<ellipse cx="148" cy="196" fill="#FFBCAD" opacity="0.55" rx="16" ry="10"></ellipse>
+<ellipse cx="212" cy="196" fill="#FFBCAD" opacity="0.55" rx="16" ry="10"></ellipse>
+<path d="M162 177 Q170 170 178 177" fill="none" stroke="#3D2010" stroke-linecap="round" stroke-width="3"></path>
+<path d="M182 177 Q190 170 198 177" fill="none" stroke="#3D2010" stroke-linecap="round" stroke-width="3"></path>
+<path d="M178 190 Q180 194 182 190" fill="none" stroke="#E8A882" stroke-linecap="round" stroke-width="1.5"></path>
+<path d="M163 202 Q180 220 197 202" fill="none" stroke="#3D2010" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M167 206 Q180 218 193 206" fill="white" opacity="0.8"></path>
+<rect fill="rgba(255,255,255,0.25)" height="36" rx="11" width="22" x="152" y="370"></rect>
+<rect fill="rgba(255,255,255,0.25)" height="36" rx="11" width="22" x="186" y="370"></rect>
+<ellipse cx="163" cy="406" fill="rgba(255,255,255,0.2)" rx="17" ry="9"></ellipse>
+<ellipse cx="197" cy="406" fill="rgba(255,255,255,0.2)" rx="17" ry="9"></ellipse>
+<path d="M80 150 L83 142 L86 150 L94 153 L86 156 L83 164 L80 156 L72 153Z" fill="#FFD93D" opacity="0.9"></path>
+<path d="M268 120 L270 115 L272 120 L277 122 L272 124 L270 129 L268 124 L263 122Z" fill="white" opacity="0.9"></path>
+<circle cx="96" cy="120" fill="#FFD93D" opacity="0.8" r="3"></circle>
+<circle cx="260" cy="155" fill="white" opacity="0.6" r="4"></circle>
+</svg>
+</div>
+<h2 class="left-title">Chào mừng đến<br/>với StyleShop!</h2>
+<p class="left-sub">Nền tảng quản lý shop thời trang toàn diện — từ đơn hàng, kho hàng đến báo cáo doanh thu.</p>
+<div class="left-features">
+<div class="left-feat-item"><span class="feat-check">📦</span>Quản lý đơn hàng theo thời gian thực</div>
+<div class="left-feat-item"><span class="feat-check">📊</span>Báo cáo &amp; thống kê doanh thu trực quan</div>
+<div class="left-feat-item"><span class="feat-check">🛒</span>Theo dõi đơn hàng dễ dàng mọi lúc</div>
+</div>
+</div><!-- /auth-left -->
+<!-- RIGHT PANEL -->
+<div class="auth-right">
+<div class="auth-form-wrap">
+<!-- Tab switcher -->
+<div class="auth-tabs" id="authTabs">
+<button class="auth-tab active" id="tabLogin" onclick="switchForm('login')">Đăng nhập</button>
+<button class="auth-tab" id="tabRegister" onclick="switchForm('register')">Tạo tài khoản</button>
+</div>
+<!-- ── LOGIN FORM ── -->
+<div class="auth-form active" id="formLogin">
+<div class="form-head">
+<h2>Chào mừng trở lại! 👋</h2>
+<p>Đăng nhập vào tài khoản StyleShop của bạn</p>
+</div>
+<div class="form-group">
+<label>Email</label>
+<input autocomplete="email" id="loginEmail" placeholder="tên@email.com" type="email"/>
+</div>
+<div class="form-group">
+<label>Mật khẩu</label>
+<div class="input-wrap">
+<input autocomplete="current-password" id="loginPwd" placeholder="••••••••" type="password"/>
+<button class="pwd-toggle" onclick="togglePwd('loginPwd',this)" type="button">👁</button>
+</div>
+</div>
+<div class="form-footer-link">
+<a onclick="switchForm('forgot')">Quên mật khẩu?</a>
+</div>
+<button class="btn-submit btn-submit-login" onclick="handleLogin(this)">🔑 Đăng nhập</button>
+<div class="form-divider">hoặc</div>
+<button class="btn-social" onclick="socialLogin('Google')">
+<svg height="18" viewbox="0 0 18 18" width="18">
+<path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"></path>
+<path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"></path>
+<path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"></path>
+<path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.162 6.656 3.58 9 3.58z" fill="#EA4335"></path>
+</svg>
+            Tiếp tục với Google
+          </button>
+<div class="form-switch">
+            Chưa có tài khoản? <button onclick="switchForm('register')">Tạo ngay miễn phí →</button>
+</div>
+<div class="admin-hint">
+            🔐 Bạn là quản trị viên?
+            <a onclick="switchForm('adminLogin')">Đăng nhập trang quản trị</a>
+</div>
+</div>
+<!-- ── REGISTER FORM (CUSTOMER ONLY) ── -->
+<div class="auth-form" id="formRegister">
+<div class="form-head">
+<h2>Tạo tài khoản 🛒</h2>
+<p>Miễn phí · Không cần thẻ tín dụng</p>
+</div>
+<div class="customer-note">
+            🛒 Đây là tài khoản <strong>Khách hàng</strong> — cho phép bạn đặt hàng,
+            theo dõi đơn và nhận ưu đãi từ shop.
+          </div>
+<div class="form-row">
+<div class="form-group">
+<label>Họ</label>
+<input autocomplete="family-name" id="regLastName" placeholder="Nguyễn" type="text"/>
+</div>
+<div class="form-group">
+<label>Tên</label>
+<input autocomplete="given-name" id="regFirstName" placeholder="Văn A" type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label>Email</label>
+<input autocomplete="email" id="regEmail" placeholder="tên@email.com" type="email"/>
+</div>
+<div class="form-group">
+<label>Số điện thoại <span style="color:var(--text-muted);font-weight:300;">(tuỳ chọn)</span></label>
+<input autocomplete="tel" id="regPhone" placeholder="0901 234 567" type="tel"/>
+</div>
+<div class="form-group">
+<label>Mật khẩu</label>
+<div class="input-wrap">
+<input autocomplete="new-password" id="regPwd" oninput="checkPwdStrength(this.value)" placeholder="Tối thiểu 8 ký tự" type="password"/>
+<button class="pwd-toggle" onclick="togglePwd('regPwd',this)" type="button">👁</button>
+</div>
+<div class="pwd-strength"><div class="pwd-strength-bar" id="pwdBar"></div></div>
+<div class="pwd-hint" id="pwdHint">Nhập mật khẩu để kiểm tra độ mạnh</div>
+</div>
+<div class="form-check">
+<input id="regTerms" type="checkbox"/>
+<label for="regTerms">
+              Tôi đồng ý với <a href="#" onclick="openLegal('terms');return false;">Điều khoản sử dụng</a> và
+              <a href="#" onclick="openLegal('privacy');return false;">Chính sách bảo mật</a> của StyleShop.
+            </label>
+</div>
+<button class="btn-submit btn-submit-register" onclick="handleRegister(this)">
+            🛒 Tạo tài khoản khách hàng
+          </button>
+<div class="form-switch">
+            Đã có tài khoản? <button onclick="switchForm('login')">Đăng nhập →</button>
+</div>
+</div>
+<!-- ── FORGOT PASSWORD ── -->
+<div class="auth-form" id="formForgot">
+<div class="form-head">
+<h2>Quên mật khẩu? 🔐</h2>
+<p>Nhập email và chúng tôi sẽ gửi link đặt lại mật khẩu.</p>
+</div>
+<div class="form-group">
+<label>Email tài khoản</label>
+<input id="forgotEmail" placeholder="tên@email.com" type="email"/>
+</div>
+<button class="btn-submit btn-submit-login" onclick="handleForgot(this)">
+            📧 Gửi link đặt lại mật khẩu
+          </button>
+<div class="form-switch">
+<button onclick="switchForm('login')">← Quay lại đăng nhập</button>
+</div>
+</div>
+<!-- ── ADMIN LOGIN (nội bộ) ── -->
+<div class="auth-form" id="formAdminLogin">
+<div class="form-head">
+<h2>Đăng nhập Quản trị 🛠️</h2>
+<p>Dành riêng cho Owner · Admin · Staff</p>
+</div>
+<div class="admin-info-box">
+            🔐 Trang đăng nhập nội bộ. Tài khoản demo:<br/>
+            <strong>admin@styleshop.vn</strong> / <strong>admin123</strong><br/>
+            <button class="mini-btn" style="margin-top:10px" onclick="fillAdminDemo()" type="button">Điền tài khoản demo</button><br/>
+            Không phải nhân viên? <a onclick="switchForm('login')">Đăng nhập khách hàng</a>
+</div>
+<div class="form-group">
+<label>Email nội bộ</label>
+<input autocomplete="email" id="adminEmail" placeholder="admin@styleshop.vn" type="email"/>
+</div>
+<div class="form-group">
+<label>Vai trò</label>
+<select id="adminRole">
+<option value="owner">👑 Chủ shop (Owner)</option>
+<option value="admin">🛠️ Quản lý (Admin)</option>
+<option value="staff">👨‍💼 Nhân viên (Staff)</option>
+</select>
+</div>
+<div class="form-group">
+<label>Mật khẩu</label>
+<div class="input-wrap">
+<input id="adminPwd" placeholder="••••••••" type="password"/>
+<button class="pwd-toggle" onclick="togglePwd('adminPwd',this)" type="button">👁</button>
+</div>
+</div>
+<button class="btn-submit btn-submit-admin" onclick="handleAdminLogin(this)">
+            🛠️ Đăng nhập hệ thống quản trị
+          </button>
+<div class="form-switch">
+<button onclick="switchForm('login')">← Quay lại</button>
+</div>
+</div>
+</div><!-- /auth-form-wrap -->
+</div><!-- /auth-right -->
+</div><!-- /auth-wrapper -->
+</div>
+<!-- ═══════════════════════════════════
+     CUSTOMER WEB APP HOME
+═══════════════════════════════════ -->
+
+<div class="page" id="pageApp">
+  <header class="app-topbar pro">
+    <div class="app-brand"><div class="app-brand-icon">👗</div><span>StyleShop App</span></div>
+    <nav class="app-nav">
+      <button onclick="scrollAppTo('shopHome')">🏠 Trang chủ</button>
+      <button onclick="scrollAppTo('shopProducts')">🛍️ Sản phẩm</button>
+      <button onclick="scrollAppTo('shopCategories')">🧩 Danh mục</button>
+      <button onclick="scrollAppTo('cartBox')">🛒 Giỏ hàng <span class="nav-pill-count" id="navCartCount">0</span></button>
+      <button onclick="scrollAppTo('customerOrders')">📦 Đơn hàng</button>
+      <button onclick="scrollAppTo('vipZone')">👑 VIP</button>
+      <button onclick="goAuth('adminLogin')">🛠️ Quản lý</button>
     </nav>
-    <div class="shop-actions">
-      <div class="search-bar" style="max-width:200px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input placeholder="Tìm sản phẩm...">
-      </div>
-      <div class="cart-btn" onclick="navigate('page-cart')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <div class="cart-count">3</div>
-      </div>
-      <div class="user-avatar" style="cursor:pointer;" onclick="navigate('page-customer-profile')">KH</div>
-    </div>
-  </div>
-
-  <!-- Hero -->
-  <div class="hero-banner">
-    <h1>Bộ sưu tập Hè 2026</h1>
-    <p>Phong cách tươi mới, năng động — dành riêng cho bạn</p>
-    <div class="hero-btns">
-      <button class="btn-hero filled">Mua ngay</button>
-      <button class="btn-hero outlined">Xem tất cả</button>
-    </div>
-  </div>
-
-  <!-- Categories -->
-  <div class="shop-categories">
-    <h2>Danh mục sản phẩm</h2>
-    <div class="cat-pills">
-      <div class="cat-pill active">Tất cả</div>
-      <div class="cat-pill">Áo thun</div>
-      <div class="cat-pill">Áo sơ mi</div>
-      <div class="cat-pill">Quần jean</div>
-      <div class="cat-pill">Váy</div>
-      <div class="cat-pill">Hoodie</div>
-      <div class="cat-pill">Đầm</div>
-      <div class="cat-pill">Áo khoác</div>
-      <div class="cat-pill">Phụ kiện</div>
-    </div>
-  </div>
-
-  <!-- Products -->
-  <div class="shop-product-grid">
-    <!-- Repeat product cards -->
-    <div class="shop-product-card" onclick="navigate('page-product-detail')">
-      <div class="shop-product-img">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
-        <div class="wish-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      </div>
-      <div class="shop-product-info">
-        <div class="cat">Áo thun – Nữ</div>
-        <div class="name">Áo thun cotton basic</div>
-        <div class="price">285.000₫</div>
-        <button class="add-btn">+ Thêm vào giỏ</button>
-      </div>
-    </div>
-    <div class="shop-product-card">
-      <div class="shop-product-img" style="background: linear-gradient(135deg,#e8f0ff,#c5d8f5);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#b5c9ec" stroke-width="1"><path d="M6 2h12l3 7H3L6 2z"/><path d="M3 9v11a2 2 0 002 2h14a2 2 0 002-2V9"/><path d="M12 9v13"/></svg>
-        <div class="wish-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      </div>
-      <div class="shop-product-info">
-        <div class="cat">Quần jean – Nam</div>
-        <div class="name">Quần jean slim fit</div>
-        <div class="price">450.000₫</div>
-        <button class="add-btn">+ Thêm vào giỏ</button>
-      </div>
-    </div>
-    <div class="shop-product-card">
-      <div class="shop-product-img" style="background: linear-gradient(135deg,#fff8e6,#fde68a);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#e5c04a" stroke-width="1"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
-        <div class="wish-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      </div>
-      <div class="shop-product-info">
-        <div class="cat">Váy – Nữ</div>
-        <div class="name">Váy midi hoa nhí</div>
-        <div class="price" style="display:flex; gap:8px; align-items:center;">
-          320.000₫ <span style="font-size:0.78rem; color:var(--text-muted); text-decoration:line-through;">420.000₫</span>
-        </div>
-        <button class="add-btn">+ Thêm vào giỏ</button>
-      </div>
-    </div>
-    <div class="shop-product-card">
-      <div class="shop-product-img" style="background: linear-gradient(135deg,#edf7f2,#a7e3c5);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#5bbf8a" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
-        <div class="wish-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      </div>
-      <div class="shop-product-info">
-        <div class="cat">Áo sơ mi – Nam</div>
-        <div class="name">Sơ mi kẻ sọc Oxford</div>
-        <div class="price">395.000₫</div>
-        <button class="add-btn">+ Thêm vào giỏ</button>
-      </div>
-    </div>
-    <div class="shop-product-card">
-      <div class="shop-product-img" style="background: linear-gradient(135deg,#fce4ec,#f48fb1);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#e8598a" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <div class="wish-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      </div>
-      <div class="shop-product-info">
-        <div class="cat">Hoodie – Unisex</div>
-        <div class="name">Hoodie oversize basic</div>
-        <div class="price">520.000₫</div>
-        <button class="add-btn">+ Thêm vào giỏ</button>
-      </div>
-    </div>
-    <div class="shop-product-card">
-      <div class="shop-product-img" style="background: linear-gradient(135deg,#f3e5f5,#ce93d8);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#b060c8" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        <div class="wish-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      </div>
-      <div class="shop-product-info">
-        <div class="cat">Đầm – Nữ</div>
-        <div class="name">Đầm wrap midi thanh lịch</div>
-        <div class="price">680.000₫</div>
-        <button class="add-btn">+ Thêm vào giỏ</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PAGE: CHI TIẾT SẢN PHẨM
-════════════════════════════════════════ -->
-<div class="page" id="page-product-detail">
-  <div class="shop-header">
-    <div style="display:flex; align-items:center; gap:10px;">
-      <div class="logo-icon-sm"><svg viewBox="0 0 52 52" fill="none"><path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/><circle cx="26" cy="26" r="5" fill="#e8598a"/></svg></div>
-      <span style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--pink-800);">THE HEXADEV</span>
-    </div>
-    <nav class="shop-nav">
-      <a onclick="navigate('page-customer-shop')">← Quay lại</a>
-    </nav>
-    <div class="shop-actions">
-      <div class="cart-btn" onclick="navigate('page-cart')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <div class="cart-count">3</div>
-      </div>
-    </div>
-  </div>
-  <div style="max-width:1000px; margin:2rem auto; padding:0 2rem; display:grid; grid-template-columns:1fr 1fr; gap:3rem;">
-    <div>
-      <div style="background:linear-gradient(135deg,var(--pink-50),var(--pink-100)); border-radius:var(--radius); height:400px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--pink-200)" stroke-width="0.5" style="width:120px; height:120px;"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <div style="width:64px; height:64px; border-radius:8px; background:var(--pink-50); border:2px solid var(--pink-300,#f9a8c5);"></div>
-        <div style="width:64px; height:64px; border-radius:8px; background:var(--beige-2); border:1px solid var(--border);"></div>
-        <div style="width:64px; height:64px; border-radius:8px; background:#e8f0ff; border:1px solid var(--border);"></div>
-      </div>
-    </div>
-    <div>
-      <div class="badge pink" style="margin-bottom:10px;">Áo thun – Nữ</div>
-      <h1 style="font-size:1.8rem; margin-bottom:0.5rem;">Áo thun cotton basic</h1>
-      <div style="font-size:1.6rem; color:var(--pink-600); font-weight:700; margin-bottom:1rem;">285.000₫</div>
-      <div style="color:var(--text-muted); font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem;">Chất liệu cotton cao cấp, thoáng mát, co giãn 4 chiều. Phù hợp mặc hàng ngày hoặc kết hợp với nhiều phong cách khác nhau.</div>
-      
-      <div style="margin-bottom:1.2rem;">
-        <div style="font-size:0.85rem; font-weight:600; margin-bottom:8px;">Màu sắc:</div>
-        <div style="display:flex; gap:8px;">
-          <div style="width:32px; height:32px; border-radius:50%; background:#fff; border:2px solid var(--pink-400); cursor:pointer;"></div>
-          <div style="width:32px; height:32px; border-radius:50%; background:#2a1a1f; border:2px solid transparent; cursor:pointer;"></div>
-          <div style="width:32px; height:32px; border-radius:50%; background:#e8598a; border:2px solid transparent; cursor:pointer;"></div>
-        </div>
-      </div>
-      <div style="margin-bottom:1.5rem;">
-        <div style="font-size:0.85rem; font-weight:600; margin-bottom:8px;">Size: <span style="font-weight:400; color:var(--pink-500); cursor:pointer;">Hướng dẫn chọn size</span></div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <div style="padding:7px 16px; border:1.5px solid var(--border); border-radius:6px; cursor:pointer; font-size:0.85rem; font-weight:500;">XS</div>
-          <div style="padding:7px 16px; border:2px solid var(--pink-400); border-radius:6px; cursor:pointer; font-size:0.85rem; font-weight:500; background:var(--pink-50); color:var(--pink-600);">S</div>
-          <div style="padding:7px 16px; border:1.5px solid var(--border); border-radius:6px; cursor:pointer; font-size:0.85rem; font-weight:500;">M</div>
-          <div style="padding:7px 16px; border:1.5px solid var(--border); border-radius:6px; cursor:pointer; font-size:0.85rem; font-weight:500;">L</div>
-          <div style="padding:7px 16px; border:1.5px solid var(--border); border-radius:6px; cursor:pointer; font-size:0.85rem; font-weight:500; opacity:0.4;">XL</div>
-        </div>
-      </div>
-      <div style="display:flex; gap:10px; margin-bottom:1.5rem;">
-        <div style="display:flex; align-items:center; border:1.5px solid var(--border); border-radius:8px; overflow:hidden;">
-          <button class="qty-btn" style="border:none; border-radius:0; width:40px; height:44px;">−</button>
-          <span style="padding:0 16px; font-weight:600;">1</span>
-          <button class="qty-btn" style="border:none; border-radius:0; width:40px; height:44px;">+</button>
-        </div>
-        <button class="btn btn-pink" style="flex:1; padding:12px;" onclick="navigate('page-cart')">🛒 Thêm vào giỏ hàng</button>
-      </div>
-      <div style="background:var(--rose-50); border-radius:var(--radius-sm); padding:1rem; font-size:0.83rem; color:var(--text-mid);">
-        <div style="margin-bottom:4px;">✓ Miễn phí vận chuyển cho đơn trên 500k</div>
-        <div style="margin-bottom:4px;">✓ Đổi trả trong 7 ngày</div>
-        <div>✓ Hàng chính hãng, cam kết chất lượng</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PAGE: GIỎ HÀNG
-════════════════════════════════════════ -->
-<div class="page" id="page-cart">
-  <div class="shop-header">
-    <span style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--pink-800);">THE HEXADEV</span>
-    <a onclick="navigate('page-customer-shop')" style="cursor:pointer; color:var(--pink-500); font-size:0.9rem;">← Tiếp tục mua sắm</a>
-    <div style="width:100px;"></div>
-  </div>
-  <div style="max-width:1100px; margin:0 auto;">
-    <div style="padding:2rem 3rem 0;">
-      <h2 style="font-size:1.5rem; margin-bottom:0.3rem;">Giỏ hàng của bạn</h2>
-      <div style="font-size:0.85rem; color:var(--text-muted);">3 sản phẩm</div>
-    </div>
-    <div class="cart-layout">
-      <div class="card-block">
-        <div class="cart-item">
-          <div class="cart-item-img">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--pink-200)" stroke-width="1.5" style="width:40px; height:40px;"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
+    <div class="app-top-actions">
+      <button class="ghost-btn" onclick="toggleWishlistView()">💗 Yêu thích <span class="nav-pill-count" id="navWishCount">0</span></button>
+      <button class="danger-btn top-logout-btn" onclick="logoutApp()">Đăng xuất</button>
+      <button class="user-avatar-btn" id="customerAvatarBtn" onclick="toggleAccountMenu()" title="Tài khoản khách hàng">🐱</button>
+      <div class="account-dropdown" id="accountMenu">
+        <div class="account-head">
+          <div class="account-big-avatar" id="accountAvatarBig">🐱</div>
+          <div>
+            <div class="account-name" id="accountName">Khách hàng StyleShop</div>
+            <div class="account-email" id="accountEmail">customer@styleshop.vn</div>
+            <div class="rank-badge" id="accountRank">👑 Member</div>
           </div>
-          <div class="cart-item-info">
-            <div class="name">Áo thun cotton basic</div>
-            <div class="variant">Màu: Trắng | Size: S</div>
-            <div class="qty-ctrl">
-              <button class="qty-btn">−</button>
-              <span style="font-weight:600; min-width:24px; text-align:center;">2</span>
-              <button class="qty-btn">+</button>
-              <span style="margin-left:auto; font-weight:600; color:var(--pink-600);">570.000₫</span>
+        </div>
+
+        <div class="account-tabbar">
+          <button class="active" data-account-tab="overview" onclick="showAccountTab('overview',this)">Tổng quan</button>
+          <button data-account-tab="vip" onclick="showAccountTab('vip',this)">VIP</button>
+          <button data-account-tab="orders" onclick="showAccountTab('orders',this)">Đơn</button>
+          <button data-account-tab="security" onclick="showAccountTab('security',this)">Bảo mật</button>
+          <button data-account-tab="avatar" onclick="showAccountTab('avatar',this)">Avatar</button>
+        </div>
+
+        <div class="account-panel active" id="accountPanelOverview">
+          <div class="account-grid">
+            <div class="account-metric"><span>Tổng đã mua</span><strong id="accountSpent">0₫</strong></div>
+            <div class="account-metric"><span>Số đơn hàng</span><strong id="accountOrders">0</strong></div>
+          </div>
+          <div class="address-box">
+            <div class="account-section-title">📍 Địa chỉ giao hàng</div>
+            <div class="cart-small" id="accountAddressText">Chưa cập nhật địa chỉ</div>
+            <div class="account-actions">
+              <button class="pill-btn" onclick="showAccountTab('security')">Sửa thông tin</button>
+              <button class="danger-btn" onclick="logoutApp()">Đăng xuất</button>
             </div>
           </div>
-          <svg onclick="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px; height:18px; cursor:pointer; color:var(--text-muted); flex-shrink:0;"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </div>
-        <div class="cart-item">
-          <div class="cart-item-img" style="background:#e8f0ff;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#b5c9ec" stroke-width="1.5" style="width:40px; height:40px;"><path d="M6 2h12l3 7H3L6 2z"/><path d="M3 9v11a2 2 0 002 2h14a2 2 0 002-2V9"/></svg>
+
+        <div class="account-panel" id="accountPanelVip">
+          <div class="account-section-title">👑 Hạng thành viên</div>
+          <div class="vip-progress"><span id="accountVipProgress"></span></div>
+          <div class="vip-meta"><span id="accountVipText">Cần mua thêm để lên hạng</span><span id="accountVipLevel">Member</span></div>
+          <div class="benefit-list">
+            <div>🌿 Member: tích điểm mua hàng và lưu lịch sử đơn.</div>
+            <div>🥈 Silver: giảm 3% trên giỏ hàng.</div>
+            <div>🥇 Gold: giảm 5%, ưu tiên xác nhận đơn.</div>
+            <div>💎 Diamond: giảm 8%, chăm sóc khách VIP.</div>
           </div>
-          <div class="cart-item-info">
-            <div class="name">Quần jean slim fit</div>
-            <div class="variant">Màu: Xanh đậm | Size: 30</div>
-            <div class="qty-ctrl">
-              <button class="qty-btn">−</button>
-              <span style="font-weight:600; min-width:24px; text-align:center;">1</span>
-              <button class="qty-btn">+</button>
-              <span style="margin-left:auto; font-weight:600; color:var(--pink-600);">450.000₫</span>
+          <div class="account-section-title" style="margin-top:14px">🎟️ Ví voucher</div>
+          <div class="voucher-wallet">
+            <button class="voucher-chip-btn" onclick="useCouponFromWallet('MINT10')">MINT10</button>
+            <button class="voucher-chip-btn" onclick="useCouponFromWallet('FREESHIP499')">FREESHIP499</button>
+            <button class="voucher-chip-btn" onclick="useCouponFromWallet('VIPSTYLE')">VIPSTYLE</button>
+          </div>
+        </div>
+
+        <div class="account-panel" id="accountPanelOrders">
+          <div class="account-section-title">📦 Lịch sử mua hàng gần đây</div>
+          <div class="account-mini-list" id="accountOrderMiniList"></div>
+          <button class="pill-btn" style="width:100%;justify-content:center;margin-top:12px" onclick="scrollAppTo('customerOrders');closeMenus()">Xem tất cả đơn</button>
+        </div>
+
+        <div class="account-panel" id="accountPanelSecurity">
+          <div class="account-security">
+            <b>🔐 Bảo mật tài khoản</b>
+            <div class="cart-small" style="margin-top:5px">Đổi mật khẩu demo và cập nhật địa chỉ giao hàng.</div>
+            <div class="security-row">
+              <input id="oldPassword" type="password" placeholder="Mật khẩu hiện tại" />
+              <input id="newPassword" type="password" placeholder="Mật khẩu mới ít nhất 8 ký tự" />
+            </div>
+            <div class="account-actions">
+              <button class="pill-btn" onclick="changePassword()">Đổi mật khẩu</button>
+              <button class="danger-btn" onclick="logoutApp()">Đăng xuất</button>
             </div>
           </div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px; height:18px; cursor:pointer; color:var(--text-muted); flex-shrink:0;"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </div>
-        <div class="cart-item">
-          <div class="cart-item-img" style="background:#fff8e6;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#e5c04a" stroke-width="1.5" style="width:40px; height:40px;"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg>
-          </div>
-          <div class="cart-item-info">
-            <div class="name">Váy midi hoa nhí</div>
-            <div class="variant">Màu: Vàng pastel | Size: M</div>
-            <div class="qty-ctrl">
-              <button class="qty-btn">−</button>
-              <span style="font-weight:600; min-width:24px; text-align:center;">1</span>
-              <button class="qty-btn">+</button>
-              <span style="margin-left:auto; font-weight:600; color:var(--pink-600);">320.000₫</span>
+          <div class="address-box">
+            <div class="account-section-title">🚚 Thông tin nhận hàng</div>
+            <div class="address-form">
+              <input id="addrPhone" placeholder="Số điện thoại" />
+              <textarea id="addrText" rows="3" placeholder="Địa chỉ giao hàng"></textarea>
+              <button class="pill-btn" onclick="saveCustomerAddress()">Lưu địa chỉ</button>
             </div>
           </div>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px; height:18px; cursor:pointer; color:var(--text-muted); flex-shrink:0;"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </div>
+
+        <div class="account-panel" id="accountPanelAvatar">
+          <div class="account-section-title">🐾 Chọn avatar thú cưng</div>
+          <div class="avatar-picker" id="avatarPicker"></div>
+          <div class="cart-small">Avatar sẽ đổi ngay trên góc phải như mạng xã hội.</div>
         </div>
       </div>
+    </div>
+  </header>
 
+  <main class="app-shell" id="shopHome">
+    <section class="app-hero-card">
       <div>
-        <div class="cart-summary">
-          <h3>Tóm tắt đơn hàng</h3>
-          <div class="summary-row"><span>Tạm tính (4 sản phẩm)</span><span>1.340.000₫</span></div>
-          <div class="summary-row"><span>Phí vận chuyển</span><span style="color:#22a06b;">Miễn phí</span></div>
-          <div class="summary-row" style="color:var(--pink-500);"><span>Giảm giá</span><span>–100.000₫</span></div>
-          <div class="summary-row summary-total"><span>Tổng cộng</span><span style="color:var(--pink-600);">1.240.000₫</span></div>
-          <div class="form-group" style="margin-top:1rem; margin-bottom:0;">
-            <input placeholder="Mã giảm giá..." style="margin-bottom:8px;">
-            <button class="btn btn-outline" style="width:100%;">Áp dụng</button>
-          </div>
-          <div style="margin:1rem 0; font-size:0.85rem; font-weight:600; color:var(--text-mid);">Phương thức thanh toán:</div>
-          <div class="pay-option selected">
-            <input type="radio" name="pay" checked>
-            <div>
-              <div style="font-weight:500; font-size:0.88rem;">Thanh toán khi nhận hàng (COD)</div>
-              <div style="font-size:0.78rem; color:var(--text-muted);">Thanh toán tiền mặt khi nhận</div>
-            </div>
-          </div>
-          <div class="pay-option">
-            <input type="radio" name="pay">
-            <div>
-              <div style="font-weight:500; font-size:0.88rem;">Chuyển khoản ngân hàng</div>
-              <div style="font-size:0.78rem; color:var(--text-muted);">MB Bank – 0123456789 – THE HEXADEV</div>
-            </div>
-          </div>
-          <button class="btn btn-pink" style="width:100%; padding:13px; margin-top:1rem;" onclick="navigate('page-customer-orders')">Đặt hàng ngay →</button>
+        <div class="app-kicker">✨ Trang chủ web app · Mua sắm thông minh</div>
+        <h1>Xin chào <span id="helloCustomer">bạn</span>, hôm nay mặc gì cho thật xinh?</h1>
+        <p>Trang mua sắm chính của StyleShop đã được nâng cấp: tìm kiếm, lọc sản phẩm, xem chi tiết, yêu thích, thêm giỏ hàng, đặt hàng, theo dõi đơn và xem hạng VIP ngay trên avatar.</p>
+        <div class="app-hero-actions">
+          <button class="pill-btn" onclick="scrollAppTo('shopProducts')">🔎 Bắt đầu mua sắm</button>
+          <button class="ghost-btn" onclick="addSuggestedCart()">⚡ Thêm combo gợi ý</button>
+          <button class="ghost-btn" onclick="openAccountMenu()">👑 Xem tài khoản VIP</button>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+      <div class="hero-mini-panel">
+        <div class="mini-stat"><strong id="miniProducts">0</strong><span>Sản phẩm</span></div>
+        <div class="mini-stat"><strong id="miniCart">0</strong><span>Trong giỏ</span></div>
+        <div class="mini-stat"><strong id="miniSpent">0₫</strong><span>Đã mua</span></div>
+        <div class="mini-stat"><strong id="miniRank">Member</strong><span>Hạng hiện tại</span></div>
+      </div>
+    </section>
 
-<!-- ════════════════════════════════════════
-     PAGE: ĐƠN HÀNG CỦA TÔI
-════════════════════════════════════════ -->
-<div class="page" id="page-customer-orders">
-  <div class="shop-header">
-    <span style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--pink-800);">THE HEXADEV</span>
-    <nav class="shop-nav">
-      <a onclick="navigate('page-customer-shop')">Trang chủ</a>
-      <a>Nam</a><a>Nữ</a><a>Sale</a>
-      <a onclick="navigate('page-customer-orders')">Đơn hàng</a>
-    </nav>
-    <div class="user-avatar" onclick="navigate('page-customer-profile')" style="cursor:pointer;">KH</div>
-  </div>
-  <div style="max-width:900px; margin:2rem auto; padding:0 2rem;">
-    <div class="page-header">
-      <div><h2>Đơn hàng của tôi</h2><div class="sub">Theo dõi lịch sử mua hàng</div></div>
-    </div>
-    <div class="tab-bar">
-      <div class="tab active">Tất cả</div>
-      <div class="tab">Chờ xác nhận</div>
-      <div class="tab">Đang giao</div>
-      <div class="tab">Hoàn thành</div>
-      <div class="tab">Đã hủy</div>
-    </div>
-    <div class="card-block" style="margin-bottom:1rem;">
-      <div style="padding:1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border);">
-        <div>
-          <div style="font-weight:600; margin-bottom:3px;">#HD20260001</div>
-          <div style="font-size:0.8rem; color:var(--text-muted);">22/05/2026 – 3 sản phẩm</div>
-        </div>
-        <div style="text-align:right;">
-          <span class="badge warning" style="margin-bottom:6px; display:block;">Đang giao</span>
-          <div style="font-weight:700; color:var(--pink-600);">1.240.000₫</div>
-        </div>
+    <section class="shop-announcement" id="vipZone">
+      <div class="promo-card">
+        <h3>Ưu đãi thành viên tuần này</h3>
+        <p>Mua từ 2 sản phẩm giảm thêm 10%, miễn phí giao hàng cho đơn từ 499.000₫. Khách VIP Gold trở lên được ưu tiên xác nhận đơn và nhận mã sinh nhật.</p>
+        <div class="voucher-row"><span class="voucher">MINT10</span><span class="voucher">FREESHIP499</span><span class="voucher">VIPSTYLE</span></div>
       </div>
-      <div class="order-timeline" style="padding:1rem 1.5rem;">
-        <div class="timeline-step">
-          <div class="step-dot done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="step-info"><div class="label">Đặt hàng thành công</div><div class="time">22/05/2026 – 10:15</div></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-dot done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="step-info"><div class="label">Đã xác nhận</div><div class="time">22/05/2026 – 11:30</div></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-dot done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="step-info"><div class="label">Đang giao hàng</div><div class="time">22/05/2026 – 14:00</div></div>
-        </div>
-        <div class="timeline-step">
-          <div class="step-dot"><svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="4"/></svg></div>
-          <div class="step-info"><div class="label" style="color:var(--text-muted);">Hoàn thành</div><div class="time">Dự kiến: 23/05/2026</div></div>
-        </div>
+      <div class="vip-card">
+        <h3 id="vipCardTitle">Hạng thành viên của bạn</h3>
+        <p class="card-sub" id="vipCardSub">Mua càng nhiều, hạng càng cao và nhận nhiều ưu đãi hơn.</p>
+        <div class="vip-progress"><span id="vipProgressMain"></span></div>
+        <div class="vip-meta"><span id="vipNeedText">Cần mua thêm để lên hạng</span><span id="vipCurrentText">Member</span></div>
       </div>
-    </div>
-    <div class="card-block">
-      <div style="padding:1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center;">
-        <div>
-          <div style="font-weight:600; margin-bottom:3px;">#HD20260002</div>
-          <div style="font-size:0.8rem; color:var(--text-muted);">15/05/2026 – 1 sản phẩm</div>
-        </div>
-        <div style="text-align:right;">
-          <span class="badge success" style="margin-bottom:6px; display:block;">Hoàn thành</span>
-          <div style="font-weight:700; color:var(--pink-600);">450.000₫</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- ════════════════════════════════════════
-     PAGE: HỒ SƠ KHÁCH HÀNG
-════════════════════════════════════════ -->
-<div class="page" id="page-customer-profile">
-  <div class="shop-header">
-    <span style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--pink-800);">THE HEXADEV</span>
-    <a onclick="navigate('page-customer-shop')" style="cursor:pointer; color:var(--pink-500); font-size:0.9rem;">← Quay lại shop</a>
-    <button class="btn btn-outline btn-sm" onclick="navigate('page-login')">Đăng xuất</button>
-  </div>
-  <div style="max-width:700px; margin:2rem auto; padding:0 2rem;">
-    <div class="profile-card" style="margin-bottom:1.5rem;">
-      <div class="profile-banner"></div>
-      <div class="profile-info">
-        <div class="profile-avatar">KH</div>
-        <div class="profile-name">Nguyễn Thị An</div>
-        <div class="profile-role">Khách hàng thân thiết</div>
-      </div>
-    </div>
-    <div class="card-block">
-      <div class="card-block-header"><h3>Thông tin cá nhân</h3><button class="btn btn-outline btn-sm">Chỉnh sửa</button></div>
-      <div class="modal-body">
-        <div class="form-row">
-          <div class="form-group"><label>Họ và tên</label><input value="Nguyễn Thị An"></div>
-          <div class="form-group"><label>Số điện thoại</label><input value="0912 345 678"></div>
-        </div>
-        <div class="form-group"><label>Email</label><input value="an.nguyen@gmail.com"></div>
-        <div class="form-group"><label>Địa chỉ giao hàng</label><input value="123 Nguyễn Huệ, Q.1, TP.HCM"></div>
-        <div style="text-align:right;"><button class="btn btn-pink">Lưu thay đổi</button></div>
-      </div>
-    </div>
-  </div>
-</div>
+    <section class="category-strip" id="shopCategories">
+      <div class="category-chip active" onclick="setCategory('all', this)"><span>✨</span><strong>Tất cả</strong></div>
+      <div class="category-chip" onclick="setCategory('Áo', this)"><span>👕</span><strong>Áo</strong></div>
+      <div class="category-chip" onclick="setCategory('Quần', this)"><span>👖</span><strong>Quần</strong></div>
+      <div class="category-chip" onclick="setCategory('Váy', this)"><span>👗</span><strong>Váy</strong></div>
+      <div class="category-chip" onclick="setCategory('Phụ kiện', this)"><span>👜</span><strong>Phụ kiện</strong></div>
+    </section>
 
-<!-- ════════════════════════════════════════
-     PAGE: NHÂN VIÊN – QUẢN LÝ ĐƠN HÀNG
-════════════════════════════════════════ -->
-<div class="page" id="page-staff">
-  <div class="app-shell">
-    <div class="sidebar">
-      <div class="sidebar-logo">
-        <div class="logo-icon-sm"><svg viewBox="0 0 52 52" fill="none"><path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/><circle cx="26" cy="26" r="5" fill="#e8598a"/></svg></div>
-        <div class="brand">THE HEXADEV<span>Nhân viên</span></div>
-      </div>
-      <div class="sidebar-nav">
-        <div class="nav-section">
-          <div class="nav-item active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Tổng quan
+    <section class="app-grid">
+      <div class="app-card" id="shopProducts">
+        <div class="card-head">
+          <div>
+            <h2 class="card-title">Sản phẩm nổi bật</h2>
+            <p class="card-sub">Lọc theo danh mục, khoảng giá, sắp xếp và thêm sản phẩm vào giỏ hàng.</p>
           </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg>
-            Đơn hàng
-            <span class="nav-badge">5</span>
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
-            Sản phẩm
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            Khách hàng
-          </div>
+          <button class="ghost-btn" onclick="resetFilters()">Làm mới</button>
         </div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="user-avatar">NV</div>
-        <div class="user-info"><div class="name">Trần Văn Bình</div><div class="role-label">Nhân viên</div></div>
-        <div class="logout-btn" onclick="navigate('page-login')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div>
-      </div>
-    </div>
-    <div class="main-content">
-      <div class="top-bar">
-        <h2>Quản lý đơn hàng</h2>
-        <div class="top-bar-right">
-          <div class="search-bar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input placeholder="Tìm đơn hàng...">
-          </div>
-        </div>
-      </div>
-      <div class="content-area">
-        <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
-          <div class="stat-card">
-            <div class="stat-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg></div>
-            <div class="label">Chờ xác nhận</div><div class="value">5</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-            <div class="label">Đang giao</div><div class="value">12</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <div class="label">Hoàn thành hôm nay</div><div class="value">8</div>
-          </div>
-        </div>
-        <div class="filter-bar">
-          <button class="btn btn-outline btn-sm active" style="border-color:var(--pink-400); color:var(--pink-600); background:var(--pink-50);">Tất cả</button>
-          <button class="btn btn-outline btn-sm">Chờ xác nhận</button>
-          <button class="btn btn-outline btn-sm">Đang giao</button>
-          <button class="btn btn-outline btn-sm">Hoàn thành</button>
-          <button class="btn btn-outline btn-sm">Đã hủy</button>
-        </div>
-        <div class="card-block">
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Thanh toán</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
-              <tbody>
-                <tr><td><b>#HD001</b></td><td>Nguyễn Thị An</td><td>3 sản phẩm</td><td style="color:var(--pink-600); font-weight:600;">1.240.000₫</td><td><span class="badge warning">COD</span></td><td><span class="badge warning">Chờ xác nhận</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-pink btn-sm">Xác nhận</button><button class="btn btn-outline btn-sm">Chi tiết</button></div></td></tr>
-                <tr><td><b>#HD002</b></td><td>Lê Minh Khoa</td><td>1 sản phẩm</td><td style="color:var(--pink-600); font-weight:600;">450.000₫</td><td><span class="badge info">CK</span></td><td><span class="badge info">Đang giao</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Đã giao</button><button class="btn btn-outline btn-sm">Chi tiết</button></div></td></tr>
-                <tr><td><b>#HD003</b></td><td>Trần Thị Bích</td><td>2 sản phẩm</td><td style="color:var(--pink-600); font-weight:600;">820.000₫</td><td><span class="badge warning">COD</span></td><td><span class="badge success">Hoàn thành</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Chi tiết</button></div></td></tr>
-                <tr><td><b>#HD004</b></td><td>Phạm Văn Tuấn</td><td>5 sản phẩm</td><td style="color:var(--pink-600); font-weight:600;">2.100.000₫</td><td><span class="badge info">CK</span></td><td><span class="badge warning">Chờ xác nhận</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-pink btn-sm">Xác nhận</button><button class="btn btn-outline btn-sm">Chi tiết</button></div></td></tr>
-                <tr><td><b>#HD005</b></td><td>Hoàng Thị Mai</td><td>1 sản phẩm</td><td style="color:var(--pink-600); font-weight:600;">285.000₫</td><td><span class="badge warning">COD</span></td><td><span class="badge danger">Đã hủy</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Chi tiết</button></div></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PAGE: QUẢN LÝ (ADMIN)
-════════════════════════════════════════ -->
-<div class="page" id="page-admin">
-  <div class="app-shell">
-    <div class="sidebar">
-      <div class="sidebar-logo">
-        <div class="logo-icon-sm"><svg viewBox="0 0 52 52" fill="none"><path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/><circle cx="26" cy="26" r="5" fill="#e8598a"/></svg></div>
-        <div class="brand">THE HEXADEV<span>Quản lý</span></div>
-      </div>
-      <div class="sidebar-nav">
-        <div class="nav-section">
-          <div class="nav-section-label">Tổng quan</div>
-          <div class="nav-item active" onclick="showAdminTab('dashboard', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Tổng quan
-          </div>
-        </div>
-        <div class="nav-section">
-          <div class="nav-section-label">Quản lý</div>
-          <div class="nav-item" onclick="showAdminTab('products', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
-            Sản phẩm
-          </div>
-          <div class="nav-item" onclick="showAdminTab('orders', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg>
-            Đơn hàng
-          </div>
-          <div class="nav-item" onclick="showAdminTab('customers', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-            Khách hàng
-          </div>
-          <div class="nav-item" onclick="showAdminTab('staff', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-            Nhân viên
-          </div>
-          <div class="nav-item" onclick="showAdminTab('categories', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            Danh mục
-          </div>
-          <div class="nav-item" onclick="showAdminTab('inventory', this)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-            Kho hàng
-          </div>
-        </div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="user-avatar">QL</div>
-        <div class="user-info"><div class="name">Lê Thị Quản</div><div class="role-label">Quản lý</div></div>
-        <div class="logout-btn" onclick="navigate('page-login')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div>
-      </div>
-    </div>
-    <div class="main-content">
-      <div class="top-bar">
-        <h2 id="admin-page-title">Tổng quan</h2>
-        <div class="top-bar-right">
-          <div class="search-bar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input placeholder="Tìm kiếm...">
-          </div>
-          <div class="icon-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="content-area">
-        <!-- DASHBOARD TAB -->
-        <div id="admin-tab-dashboard">
-          <div class="stat-grid">
-            <div class="stat-card"><div class="stat-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="label">Doanh thu tháng</div><div class="value">48.5M</div><div class="change up">↑ 12% so với tháng trước</div></div>
-            <div class="stat-card"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg></div><div class="label">Đơn hàng tháng</div><div class="value">284</div><div class="change up">↑ 8% so với tháng trước</div></div>
-            <div class="stat-card"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="label">Khách hàng mới</div><div class="value">53</div><div class="change up">↑ 5% so với tháng trước</div></div>
-            <div class="stat-card"><div class="stat-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg></div><div class="label">Sản phẩm đang bán</div><div class="value">147</div><div class="change down">↓ 3 hết hàng</div></div>
-          </div>
-          <div style="display:grid; grid-template-columns:2fr 1fr; gap:1.5rem;">
-            <div class="card-block">
-              <div class="card-block-header"><h3>Doanh thu 7 ngày gần nhất</h3></div>
-              <div style="padding:1.5rem;">
-                <div class="chart-bars">
-                  <div class="chart-bar" style="height:55%;"></div>
-                  <div class="chart-bar" style="height:70%;"></div>
-                  <div class="chart-bar" style="height:45%;"></div>
-                  <div class="chart-bar highlight" style="height:90%;"></div>
-                  <div class="chart-bar" style="height:60%;"></div>
-                  <div class="chart-bar" style="height:75%;"></div>
-                  <div class="chart-bar" style="height:80%;"></div>
-                </div>
-                <div class="chart-labels">
-                  <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-block">
-              <div class="card-block-header"><h3>Top sản phẩm</h3></div>
-              <div style="padding:1rem 1.5rem;">
-                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.85rem;"><span>Áo thun cotton</span><span style="font-weight:600; color:var(--pink-600);">142</span></div>
-                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.85rem;"><span>Quần jean slim</span><span style="font-weight:600; color:var(--pink-600);">98</span></div>
-                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.85rem;"><span>Váy midi hoa nhí</span><span style="font-weight:600; color:var(--pink-600);">87</span></div>
-                <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.85rem;"><span>Hoodie oversize</span><span style="font-weight:600; color:var(--pink-600);">71</span></div>
-                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:0.85rem;"><span>Đầm wrap midi</span><span style="font-weight:600; color:var(--pink-600);">65</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRODUCTS TAB -->
-        <div id="admin-tab-products" style="display:none;">
-          <div class="page-header">
-            <div><h2>Sản phẩm</h2><div class="sub">147 sản phẩm đang hoạt động</div></div>
-            <button class="btn btn-pink" onclick="openModal('modal-add-product')">+ Thêm sản phẩm</button>
-          </div>
-          <div class="filter-bar">
-            <div class="search-bar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              <input placeholder="Tìm theo tên, mã...">
-            </div>
-            <select class="btn btn-outline btn-sm" style="border-radius:var(--radius-sm); cursor:pointer;">
-              <option>Tất cả danh mục</option>
-              <option>Áo thun</option>
-              <option>Áo sơ mi</option>
-              <option>Quần jean</option>
-              <option>Váy</option>
-              <option>Hoodie</option>
-            </select>
-            <select class="btn btn-outline btn-sm" style="border-radius:var(--radius-sm); cursor:pointer;">
-              <option>Tất cả giới tính</option>
-              <option>Nam</option>
-              <option>Nữ</option>
-              <option>Unisex</option>
-            </select>
-          </div>
-          <div class="product-grid">
-            <div class="product-card">
-              <div class="product-img"><div class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg></div><div class="stock-badge">142 đã bán</div></div>
-              <div class="product-info"><div class="code">SP001 · Áo thun · Nữ</div><div class="name">Áo thun cotton basic</div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;"><div class="price">285.000₫</div><div style="display:flex; gap:4px;"><span class="color-dot" style="background:#fff; border:1.5px solid #ddd;"></span><span class="color-dot" style="background:#2a1a1f;"></span><span class="color-dot" style="background:#e8598a;"></span></div></div><div class="category" style="margin-top:6px; display:flex; gap:4px; flex-wrap:wrap;"><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">XS</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">S</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">M</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">L</span></div><div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-outline btn-sm" style="flex:1;">Sửa</button><button class="btn btn-danger-outline btn-sm" style="flex:1;">Xóa</button></div></div>
-            </div>
-            <div class="product-card">
-              <div class="product-img" style="background:linear-gradient(135deg,#e8f0ff,#c5d8f5);"><div class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b5c9ec" stroke-width="1"><path d="M6 2h12l3 7H3L6 2z"/><path d="M3 9v11a2 2 0 002 2h14a2 2 0 002-2V9"/></svg></div><div class="stock-badge">98 đã bán</div></div>
-              <div class="product-info"><div class="code">SP002 · Quần jean · Nam</div><div class="name">Quần jean slim fit</div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;"><div class="price">450.000₫</div><div style="display:flex; gap:4px;"><span class="color-dot" style="background:#1a3050;"></span><span class="color-dot" style="background:#4a6080;"></span></div></div><div class="category" style="margin-top:6px; display:flex; gap:4px;"><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">28</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">29</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">30</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">32</span></div><div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-outline btn-sm" style="flex:1;">Sửa</button><button class="btn btn-danger-outline btn-sm" style="flex:1;">Xóa</button></div></div>
-            </div>
-            <div class="product-card">
-              <div class="product-img" style="background:linear-gradient(135deg,#fff8e6,#fde68a);"><div class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e5c04a" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5"/></svg></div><div class="stock-badge">87 đã bán</div></div>
-              <div class="product-info"><div class="code">SP003 · Váy · Nữ</div><div class="name">Váy midi hoa nhí</div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;"><div class="price" style="display:flex; gap:6px; align-items:center;">320.000₫ <span style="font-size:0.72rem; text-decoration:line-through; color:var(--text-muted);">420k</span></div></div><div class="category" style="margin-top:6px; display:flex; gap:4px;"><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">S</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">M</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">L</span></div><div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-outline btn-sm" style="flex:1;">Sửa</button><button class="btn btn-danger-outline btn-sm" style="flex:1;">Xóa</button></div></div>
-            </div>
-            <div class="product-card">
-              <div class="product-img" style="background:linear-gradient(135deg,#fce4ec,#f48fb1);"><div class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#e8598a" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="stock-badge">71 đã bán</div></div>
-              <div class="product-info"><div class="code">SP004 · Hoodie · Unisex</div><div class="name">Hoodie oversize basic</div><div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;"><div class="price">520.000₫</div><div style="display:flex; gap:4px;"><span class="color-dot" style="background:#e8598a;"></span><span class="color-dot" style="background:#fff; border:1.5px solid #ddd;"></span><span class="color-dot" style="background:#2a1a1f;"></span></div></div><div class="category" style="margin-top:6px; display:flex; gap:4px;"><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">S</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">M</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">L</span><span class="badge gray" style="font-size:0.7rem; padding:2px 6px;">XL</span></div><div style="display:flex; gap:6px; margin-top:10px;"><button class="btn btn-outline btn-sm" style="flex:1;">Sửa</button><button class="btn btn-danger-outline btn-sm" style="flex:1;">Xóa</button></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ORDERS TAB -->
-        <div id="admin-tab-orders" style="display:none;">
-          <div class="page-header">
-            <div><h2>Đơn hàng</h2><div class="sub">Tổng 284 đơn trong tháng</div></div>
-          </div>
-          <div class="card-block">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Ngày đặt</th><th>Sản phẩm</th><th>Tổng tiền</th><th>Thanh toán</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
-                <tbody>
-                  <tr><td><b>#HD001</b></td><td>Nguyễn Thị An</td><td>22/05/2026</td><td>3 SP</td><td style="color:var(--pink-600); font-weight:600;">1.240.000₫</td><td><span class="badge warning">COD</span></td><td><span class="badge warning">Chờ xác nhận</span></td><td><button class="btn btn-outline btn-sm">Chi tiết</button></td></tr>
-                  <tr><td><b>#HD002</b></td><td>Lê Minh Khoa</td><td>22/05/2026</td><td>1 SP</td><td style="color:var(--pink-600); font-weight:600;">450.000₫</td><td><span class="badge info">CK</span></td><td><span class="badge info">Đang giao</span></td><td><button class="btn btn-outline btn-sm">Chi tiết</button></td></tr>
-                  <tr><td><b>#HD003</b></td><td>Trần Thị Bích</td><td>21/05/2026</td><td>2 SP</td><td style="color:var(--pink-600); font-weight:600;">820.000₫</td><td><span class="badge warning">COD</span></td><td><span class="badge success">Hoàn thành</span></td><td><button class="btn btn-outline btn-sm">Chi tiết</button></td></tr>
-                  <tr><td><b>#HD004</b></td><td>Phạm Văn Tuấn</td><td>20/05/2026</td><td>5 SP</td><td style="color:var(--pink-600); font-weight:600;">2.100.000₫</td><td><span class="badge info">CK</span></td><td><span class="badge success">Hoàn thành</span></td><td><button class="btn btn-outline btn-sm">Chi tiết</button></td></tr>
-                  <tr><td><b>#HD005</b></td><td>Hoàng Thị Mai</td><td>20/05/2026</td><td>1 SP</td><td style="color:var(--pink-600); font-weight:600;">285.000₫</td><td><span class="badge warning">COD</span></td><td><span class="badge danger">Đã hủy</span></td><td><button class="btn btn-outline btn-sm">Chi tiết</button></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- CUSTOMERS TAB -->
-        <div id="admin-tab-customers" style="display:none;">
-          <div class="page-header"><div><h2>Khách hàng</h2><div class="sub">1.248 khách hàng đã đăng ký</div></div><button class="btn btn-pink">+ Thêm khách hàng</button></div>
-          <div class="card-block">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Khách hàng</th><th>Email</th><th>Số điện thoại</th><th>Tổng đơn</th><th>Chi tiêu</th><th>Ngày đăng ký</th><th>Thao tác</th></tr></thead>
-                <tbody>
-                  <tr><td><div style="display:flex; align-items:center; gap:8px;"><div class="user-avatar" style="width:32px; height:32px; font-size:0.75rem;">NA</div> Nguyễn Thị An</div></td><td>an@gmail.com</td><td>0912 345 678</td><td>5</td><td style="color:var(--pink-600); font-weight:600;">3.2M₫</td><td>01/01/2026</td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Xem</button><button class="btn btn-outline btn-sm">Khóa</button></div></td></tr>
-                  <tr><td><div style="display:flex; align-items:center; gap:8px;"><div class="user-avatar" style="width:32px; height:32px; font-size:0.75rem; background:linear-gradient(135deg,#c5d8f5,#7faed4);">MK</div> Lê Minh Khoa</div></td><td>khoa@gmail.com</td><td>0987 654 321</td><td>3</td><td style="color:var(--pink-600); font-weight:600;">1.5M₫</td><td>15/02/2026</td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Xem</button><button class="btn btn-outline btn-sm">Khóa</button></div></td></tr>
-                  <tr><td><div style="display:flex; align-items:center; gap:8px;"><div class="user-avatar" style="width:32px; height:32px; font-size:0.75rem; background:linear-gradient(135deg,#edf7f2,#5bbf8a); color:#2a7a5a;">TB</div> Trần Thị Bích</div></td><td>bich@gmail.com</td><td>0901 234 567</td><td>8</td><td style="color:var(--pink-600); font-weight:600;">5.8M₫</td><td>05/11/2025</td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Xem</button><button class="btn btn-outline btn-sm">Khóa</button></div></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- STAFF TAB -->
-        <div id="admin-tab-staff" style="display:none;">
-          <div class="page-header"><div><h2>Nhân viên</h2><div class="sub">8 nhân viên đang hoạt động</div></div><button class="btn btn-pink" onclick="openModal('modal-add-staff')">+ Thêm nhân viên</button></div>
-          <div class="card-block">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Nhân viên</th><th>Email</th><th>Vai trò</th><th>Trạng thái</th><th>Ngày tạo</th><th>Thao tác</th></tr></thead>
-                <tbody>
-                  <tr><td><div style="display:flex; align-items:center; gap:8px;"><div class="user-avatar" style="width:32px; height:32px; font-size:0.75rem;">VB</div>Trần Văn Bình</div></td><td>binh@hexadev.vn</td><td><span class="badge gray">Nhân viên</span></td><td><span class="badge success">Đang hoạt động</span></td><td>01/03/2026</td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Khóa</button></div></td></tr>
-                  <tr><td><div style="display:flex; align-items:center; gap:8px;"><div class="user-avatar" style="width:32px; height:32px; font-size:0.75rem; background:linear-gradient(135deg,#fff8e6,#e5c04a); color:#7a5500;">TH</div>Phạm Thị Hoa</div></td><td>hoa@hexadev.vn</td><td><span class="badge gray">Nhân viên</span></td><td><span class="badge success">Đang hoạt động</span></td><td>15/01/2026</td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Khóa</button></div></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- CATEGORIES TAB -->
-        <div id="admin-tab-categories" style="display:none;">
-          <div class="page-header"><div><h2>Danh mục sản phẩm</h2></div><button class="btn btn-pink">+ Thêm danh mục</button></div>
-          <div class="card-block">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Tên danh mục</th><th>Giới tính</th><th>Số sản phẩm</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
-                <tbody>
-                  <tr><td><b>Áo thun</b></td><td>Nam & Nữ</td><td>32</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                  <tr><td><b>Áo sơ mi</b></td><td>Nam & Nữ</td><td>24</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                  <tr><td><b>Quần jean</b></td><td>Nam & Nữ</td><td>18</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                  <tr><td><b>Váy</b></td><td>Nữ</td><td>21</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                  <tr><td><b>Hoodie</b></td><td>Unisex</td><td>15</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                  <tr><td><b>Đầm</b></td><td>Nữ</td><td>19</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                  <tr><td><b>Phụ kiện</b></td><td>Tất cả</td><td>18</td><td><span class="badge success">Hoạt động</span></td><td><div style="display:flex; gap:6px;"><button class="btn btn-outline btn-sm">Sửa</button><button class="btn btn-danger-outline btn-sm">Ẩn</button></div></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- INVENTORY TAB -->
-        <div id="admin-tab-inventory" style="display:none;">
-          <div class="page-header"><div><h2>Kho hàng</h2><div class="sub">Quản lý tồn kho theo biến thể size & màu</div></div></div>
-          <div class="filter-bar">
-            <div class="search-bar">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              <input placeholder="Tìm sản phẩm...">
-            </div>
-            <button class="btn btn-outline btn-sm">Lọc hàng sắp hết</button>
-          </div>
-          <div class="card-block">
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Sản phẩm</th><th>Danh mục</th><th>Màu sắc</th><th>Size XS</th><th>Size S</th><th>Size M</th><th>Size L</th><th>Size XL</th><th>Tổng</th></tr></thead>
-                <tbody>
-                  <tr><td><b>Áo thun cotton basic</b></td><td>Áo thun – Nữ</td><td><span class="color-dot" style="background:#fff; border:1.5px solid #ddd;"></span>Trắng</td><td>12</td><td style="color:#22a06b; font-weight:600;">8</td><td>15</td><td>10</td><td style="color:#d03e3e; font-weight:600;">0 ⚠</td><td>45</td></tr>
-                  <tr><td><b>Áo thun cotton basic</b></td><td>Áo thun – Nữ</td><td><span class="color-dot" style="background:#2a1a1f;"></span>Đen</td><td>5</td><td>12</td><td>18</td><td>9</td><td>4</td><td>48</td></tr>
-                  <tr><td><b>Quần jean slim fit</b></td><td>Quần jean – Nam</td><td><span class="color-dot" style="background:#1a3050;"></span>Xanh đậm</td><td>–</td><td>–</td><td>8</td><td>12</td><td>6</td><td>26</td></tr>
-                  <tr><td><b>Váy midi hoa nhí</b></td><td>Váy – Nữ</td><td><span class="color-dot" style="background:#fde68a; border:1.5px solid #e5c04a;"></span>Vàng pastel</td><td>–</td><td style="color:#d03e3e; font-weight:600;">2 ⚠</td><td>7</td><td>5</td><td>–</td><td>14</td></tr>
-                  <tr><td><b>Hoodie oversize</b></td><td>Hoodie – Unisex</td><td><span class="color-dot" style="background:#e8598a;"></span>Hồng</td><td>–</td><td>9</td><td>14</td><td>11</td><td style="color:#d4a017; font-weight:600;">3 ⚡</td><td>37</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     PAGE: CHỦ CỬA HÀNG (OWNER)
-════════════════════════════════════════ -->
-<div class="page" id="page-owner">
-  <div class="app-shell">
-    <div class="sidebar">
-      <div class="sidebar-logo">
-        <div class="logo-icon-sm"><svg viewBox="0 0 52 52" fill="none"><path d="M26 6L46 17v18L26 46 6 35V17L26 6z" fill="#f8bbd0" stroke="#e8598a" stroke-width="2"/><circle cx="26" cy="26" r="5" fill="#e8598a"/></svg></div>
-        <div class="brand">THE HEXADEV<span>Chủ cửa hàng</span></div>
-      </div>
-      <div class="sidebar-nav">
-        <div class="nav-section">
-          <div class="nav-item active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Tổng quan
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            Doanh thu
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Thống kê
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-            Quản lý tài khoản
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41"/></svg>
-            Cài đặt
-          </div>
-        </div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="user-avatar" style="background:linear-gradient(135deg,var(--pink-400),var(--pink-600));">CH</div>
-        <div class="user-info"><div class="name">Nguyễn Văn Chủ</div><div class="role-label">Chủ cửa hàng</div></div>
-        <div class="logout-btn" onclick="navigate('page-login')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></div>
-      </div>
-    </div>
-    <div class="main-content">
-      <div class="top-bar">
-        <h2>Báo cáo & Thống kê</h2>
-        <div class="top-bar-right">
-          <select class="btn btn-outline btn-sm" style="border-radius:var(--radius-sm);">
-            <option>Tháng 5/2026</option>
-            <option>Tháng 4/2026</option>
-            <option>Quý 1/2026</option>
+        <div class="shop-tools pro">
+          <input id="productSearch" oninput="renderProducts()" placeholder="Tìm áo sơ mi, hoodie, váy..." />
+          <select id="categoryFilter" onchange="renderProducts()">
+            <option value="all">Tất cả</option><option value="Áo">Áo</option><option value="Quần">Quần</option><option value="Váy">Váy</option><option value="Phụ kiện">Phụ kiện</option>
           </select>
-          <button class="btn btn-outline btn-sm">📥 Xuất báo cáo</button>
+          <select id="priceFilter" onchange="renderProducts()">
+            <option value="all">Mọi mức giá</option><option value="under300">Dưới 300k</option><option value="300to500">300k - 500k</option><option value="over500">Trên 500k</option>
+          </select>
+          <select id="sortFilter" onchange="renderProducts()">
+            <option value="popular">Bán chạy</option><option value="new">Mới nhất</option><option value="priceAsc">Giá tăng</option><option value="priceDesc">Giá giảm</option>
+          </select>
         </div>
+        <div class="product-grid" id="productGrid"></div>
       </div>
-      <div class="content-area">
-        <div class="stat-grid">
-          <div class="stat-card"><div class="stat-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div class="label">Doanh thu tháng</div><div class="value">48.5M</div><div class="change up">↑ 12% tháng trước</div></div>
-          <div class="stat-card"><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg></div><div class="label">Đơn hàng</div><div class="value">284</div><div class="change up">↑ 8% tháng trước</div></div>
-          <div class="stat-card"><div class="stat-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="label">Giá vốn ước tính</div><div class="value">24.2M</div><div class="change down">↑ 5% so với tháng trước</div></div>
-          <div class="stat-card"><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="label">Lợi nhuận ước tính</div><div class="value">24.3M</div><div class="change up">↑ 18% so với tháng trước</div></div>
+
+      <aside class="app-card cart-card" id="cartBox">
+        <div class="card-head">
+          <div><h2 class="card-title">Giỏ hàng</h2><p class="card-sub">Cập nhật size, số lượng và đặt hàng COD.</p></div>
+          <button class="ghost-btn" onclick="clearCart()">Xóa</button>
         </div>
-        <div style="display:grid; grid-template-columns:3fr 2fr; gap:1.5rem; margin-bottom:1.5rem;">
-          <div class="card-block">
-            <div class="card-block-header"><h3>Doanh thu theo tháng (2026)</h3></div>
-            <div style="padding:1.5rem;">
-              <div class="chart-bars" style="height:160px;">
-                <div class="chart-bar" style="height:50%;"></div>
-                <div class="chart-bar" style="height:65%;"></div>
-                <div class="chart-bar" style="height:40%;"></div>
-                <div class="chart-bar" style="height:72%;"></div>
-                <div class="chart-bar highlight" style="height:100%;"></div>
-              </div>
-              <div class="chart-labels">
-                <span>T1</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span>
-              </div>
-            </div>
+        <div class="cart-list" id="cartList"></div>
+        <div class="cart-total"><span>Tạm tính</span><strong id="cartSubtotal">0₫</strong></div>
+        <div class="cart-small" id="cartDiscount" style="margin-top:8px;text-align:right">Ưu đãi VIP: 0₫</div>
+        <div class="cart-extra">
+          <div class="coupon-row">
+            <input id="couponInput" placeholder="Nhập mã: MINT10 / FREESHIP499 / VIPSTYLE" />
+            <button class="ghost-btn" onclick="applyCoupon()">Áp dụng</button>
           </div>
-          <div class="card-block">
-            <div class="card-block-header"><h3>Tỷ lệ đơn hàng</h3></div>
-            <div style="padding:1.5rem;">
-              <div style="display:flex; flex-direction:column; gap:12px;">
-                <div><div style="display:flex; justify-content:space-between; font-size:0.83rem; margin-bottom:4px;"><span>Hoàn thành</span><span style="font-weight:600; color:#22a06b;">78%</span></div><div style="height:8px; background:var(--border); border-radius:4px;"><div style="height:100%; width:78%; background:#22a06b; border-radius:4px;"></div></div></div>
-                <div><div style="display:flex; justify-content:space-between; font-size:0.83rem; margin-bottom:4px;"><span>Đang giao</span><span style="font-weight:600; color:#3b6fd4;">14%</span></div><div style="height:8px; background:var(--border); border-radius:4px;"><div style="height:100%; width:14%; background:#3b6fd4; border-radius:4px;"></div></div></div>
-                <div><div style="display:flex; justify-content:space-between; font-size:0.83rem; margin-bottom:4px;"><span>Đã hủy</span><span style="font-weight:600; color:#d03e3e;">8%</span></div><div style="height:8px; background:var(--border); border-radius:4px;"><div style="height:100%; width:8%; background:#d03e3e; border-radius:4px;"></div></div></div>
-              </div>
-              <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--border);">
-                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Phương thức thanh toán</div>
-                <div style="display:flex; justify-content:space-between; font-size:0.83rem;"><span>COD</span><span style="font-weight:600;">62%</span></div>
-                <div style="display:flex; justify-content:space-between; font-size:0.83rem;"><span>Chuyển khoản</span><span style="font-weight:600;">38%</span></div>
-              </div>
-            </div>
-          </div>
+          <div class="cart-small" id="activeCouponText">Chưa áp dụng voucher.</div>
+          <select id="deliveryMethod" onchange="renderCart()">
+            <option value="standard">Giao tiêu chuẩn 2–4 ngày</option>
+            <option value="fast">Giao nhanh 24h</option>
+            <option value="pickup">Nhận tại cửa hàng</option>
+          </select>
+          <div class="cart-fee-row"><span>Phí giao hàng</span><strong id="cartShipping">0₫</strong></div>
+          <div class="cart-small" id="cartAddressMini">Giao tới: Địa chỉ demo của khách hàng</div>
         </div>
-        <div class="card-block">
-          <div class="card-block-header"><h3>Top 5 sản phẩm bán chạy tháng 5</h3></div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>#</th><th>Sản phẩm</th><th>Danh mục</th><th>Đã bán</th><th>Doanh thu</th><th>Tăng trưởng</th></tr></thead>
-              <tbody>
-                <tr><td style="font-weight:700; color:var(--pink-500);">1</td><td>Áo thun cotton basic</td><td>Áo thun – Nữ</td><td>142</td><td style="color:var(--pink-600); font-weight:600;">40.5M₫</td><td><span class="change up">↑ 15%</span></td></tr>
-                <tr><td style="font-weight:700; color:var(--text-mid);">2</td><td>Quần jean slim fit</td><td>Quần jean – Nam</td><td>98</td><td style="color:var(--pink-600); font-weight:600;">44.1M₫</td><td><span class="change up">↑ 8%</span></td></tr>
-                <tr><td style="font-weight:700; color:var(--text-mid);">3</td><td>Váy midi hoa nhí</td><td>Váy – Nữ</td><td>87</td><td style="color:var(--pink-600); font-weight:600;">27.8M₫</td><td><span class="change down">↓ 3%</span></td></tr>
-                <tr><td style="font-weight:700; color:var(--text-mid);">4</td><td>Hoodie oversize basic</td><td>Hoodie – Unisex</td><td>71</td><td style="color:var(--pink-600); font-weight:600;">36.9M₫</td><td><span class="change up">↑ 22%</span></td></tr>
-                <tr><td style="font-weight:700; color:var(--text-mid);">5</td><td>Đầm wrap midi thanh lịch</td><td>Đầm – Nữ</td><td>65</td><td style="color:var(--pink-600); font-weight:600;">44.2M₫</td><td><span class="change up">↑ 11%</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <div class="cart-total"><span>Tổng thanh toán</span><strong id="cartTotal">0₫</strong></div>
+        <button class="pill-btn" style="width:100%;justify-content:center;margin-top:16px" onclick="checkout()">✅ Đặt hàng COD</button>
+      </aside>
+    </section>
+
+    <section class="app-card" id="wishlistPanel" style="margin-top:22px;display:none">
+      <div class="card-head"><div><h2 class="card-title">Sản phẩm yêu thích</h2><p class="card-sub">Các món bạn đã thả tim sẽ được lưu tại đây trong phiên demo.</p></div><button class="ghost-btn" onclick="toggleWishlistView()">Ẩn</button></div>
+      <div class="product-grid" id="wishlistGrid"></div>
+    </section>
+
+    <section class="app-card" id="customerOrders" style="margin-top:22px">
+      <div class="card-head">
+        <div><h2 class="card-title">Theo dõi đơn hàng</h2><p class="card-sub">Trạng thái đơn sẽ thay đổi theo luồng xử lý của shop.</p></div>
+        <button class="ghost-btn" onclick="seedCustomerOrder()">Tạo đơn mẫu</button>
+      </div>
+      <div class="order-list" id="customerOrderList"></div>
+    </section>
+
+    <section class="profile-panel">
+      <div class="profile-card"><h3>🔐 Bảo mật</h3><p>Đổi mật khẩu, chọn avatar thú cưng và kiểm tra thông tin đăng nhập từ nút avatar góc phải.</p></div>
+      <div class="profile-card"><h3>🚚 Giao hàng</h3><p>Đơn hàng có các bước: chờ xác nhận → xác nhận → đóng gói → đang giao → hoàn thành.</p></div>
+      <div class="profile-card"><h3>👑 VIP / Rank</h3><p>Hệ thống tự tính hạng dựa trên tổng tiền đã mua: Member, Silver, Gold và Diamond.</p></div>
+    </section>
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════
+     ADMIN / STAFF / OWNER DASHBOARD PRO
+═══════════════════════════════════ -->
+<div class="page" id="pageAdmin">
+  <header class="app-topbar pro">
+    <div class="app-brand"><div class="app-brand-icon">🛠️</div><span>StyleShop Manager</span></div>
+    <nav class="app-nav">
+      <button onclick="scrollAppTo('adminOverview')">📊 Tổng quan</button>
+      <button onclick="scrollAppTo('adminOrders')">📦 Đơn hàng</button>
+      <button onclick="scrollAppTo('adminProducts')">👗 Sản phẩm</button>
+      <button onclick="scrollAppTo('adminCustomers')">👑 Khách VIP</button>
+      <button onclick="scrollAppTo('adminStaff')">👥 Nhân viên</button>
+      <button onclick="scrollAppTo('adminReport')">📈 Báo cáo</button>
+    </nav>
+    <div class="app-top-actions">
+      <button class="ghost-btn" onclick="simulateNewOrder()">🔔 Đơn mới</button>
+      <button class="danger-btn top-logout-btn" onclick="logoutApp()">Đăng xuất</button>
+      <button class="user-avatar-btn" id="adminAvatarBtn" onclick="toggleAdminMenu()" title="Tài khoản quản trị">🦊</button>
+      <div class="account-dropdown" id="adminAccountMenu">
+        <div class="account-head"><div class="account-big-avatar" id="adminAvatarBig">🦊</div><div><div class="account-name" id="adminWelcomeDrop">Admin Demo</div><div class="account-email">admin@styleshop.vn</div><div class="rank-badge" id="adminRankBadge">🛡️ Quản trị hệ thống</div></div></div>
+        <div class="account-grid"><div class="account-metric"><span>Đơn chờ</span><strong id="dropPending">0</strong></div><div class="account-metric"><span>Doanh thu</span><strong id="dropRevenue">0₫</strong></div></div>
+        <div class="account-actions"><button class="pill-btn" onclick="scrollAppTo('adminOrders')">Xử lý đơn</button><button class="danger-btn" onclick="logoutApp()">Đăng xuất</button></div>
       </div>
     </div>
+  </header>
+
+  <main class="app-shell admin-shell-pro">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <div class="admin-avatar" id="adminSideAvatar">🦊</div>
+        <h3 id="adminWelcome">Admin Demo</h3>
+        <p id="adminRoleText">Tài khoản quản trị có giao diện riêng để quản lý sản phẩm, đơn hàng, khách VIP, nhân viên và báo cáo.</p>
+        <div class="admin-demo-note"><strong>Tài khoản demo:</strong><br/>Email: <b>admin@styleshop.vn</b><br/>Mật khẩu: <b>admin123</b></div>
+        <div class="admin-top-tabs">
+          <button onclick="goAdmin('owner')">Owner</button><button onclick="goAdmin('admin')">Admin</button><button onclick="goAdmin('staff')">Staff</button>
+        </div>
+        <div class="admin-menu">
+          <button onclick="scrollAppTo('adminOverview')">📈 Dashboard</button>
+          <button onclick="scrollAppTo('adminOrders')">✅ Quy trình đơn hàng</button>
+          <button onclick="scrollAppTo('adminProducts')">➕ Kho sản phẩm</button>
+          <button onclick="scrollAppTo('adminReport')">📊 Doanh thu</button>
+        </div>
+      </aside>
+
+      <section class="admin-content">
+        <div class="app-card" id="adminOverview">
+          <div class="card-head"><div><h2 class="card-title">Bảng điều khiển quản trị</h2><p class="card-sub">Tổng quan nhanh hoạt động vận hành theo thời gian thực demo.</p></div><button class="pill-btn" onclick="simulateNewOrder()">⚡ Giả lập đơn mới</button></div>
+          <div class="admin-stats">
+            <div class="admin-stat"><span>Doanh thu tháng</span><strong id="statRevenue">0₫</strong></div>
+            <div class="admin-stat"><span>Đơn chờ xác nhận</span><strong id="statPending">0</strong></div>
+            <div class="admin-stat"><span>Đang giao</span><strong id="statShipping">0</strong></div>
+            <div class="admin-stat"><span>Sản phẩm tồn kho</span><strong id="statStock">0</strong></div>
+          </div>
+        </div>
+
+        <div class="app-card" id="adminOrders">
+          <div class="card-head"><div><h2 class="card-title">Quản lý đơn hàng chuyên nghiệp</h2><p class="card-sub">Không còn nút Giao/Hủy/Xong quá nhanh: đơn hàng đi theo quy trình thực tế từng bước.</p></div><button class="ghost-btn" onclick="renderAdmin()">Làm mới đơn</button></div>
+          <div class="workflow-note"><b>Luồng xử lý:</b> Chờ xác nhận → Đã xác nhận → Đang đóng gói → Đang giao → Hoàn thành. Hủy đơn cần lý do và không áp dụng cho đơn đã hoàn thành.</div>
+          <div class="order-filterbar">
+            <input id="adminOrderSearch" oninput="renderAdmin()" placeholder="Tìm mã đơn, tên khách, sản phẩm..." />
+            <select id="adminStatusFilter" onchange="renderAdmin()">
+              <option value="all">Tất cả trạng thái</option>
+              <option>Chờ xác nhận</option><option>Đã xác nhận</option><option>Đang đóng gói</option><option>Đang giao</option><option>Hoàn thành</option><option>Đã hủy</option>
+            </select>
+            <button class="ghost-btn" onclick="clearAdminFilters()">Xóa lọc</button>
+          </div>
+          <div class="admin-order-board" id="adminOrderBoard"></div>
+          <div class="table-wrap"><table class="app-table"><thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Sản phẩm</th><th>Thanh toán</th><th>Trạng thái</th><th>Cập nhật</th></tr></thead><tbody id="adminOrderRows"></tbody></table></div>
+        </div>
+
+        <div class="app-card" id="adminProducts">
+          <div class="card-head"><div><h2 class="card-title">Kho sản phẩm</h2><p class="card-sub">Thêm, sửa giá, xóa sản phẩm, theo dõi tồn kho thấp và nhập kho nhanh.</p></div><button class="ghost-btn" onclick="restockAll()">Nhập kho +5</button></div>
+          <div class="admin-form"><input id="newProductName" placeholder="Tên sản phẩm"/><select id="newProductCat"><option>Áo</option><option>Quần</option><option>Váy</option><option>Phụ kiện</option></select><input id="newProductPrice" placeholder="Giá" type="number"/><input id="newProductStock" placeholder="Tồn" type="number"/><button class="pill-btn" onclick="addAdminProduct()">Thêm</button></div>
+          <div class="table-wrap"><table class="app-table"><thead><tr><th>Sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Tồn</th><th>Đã bán</th><th>Thao tác</th></tr></thead><tbody id="adminProductRows"></tbody></table></div>
+        </div>
+
+        <div class="manager-grid" id="adminCustomers">
+          <div class="app-card"><h2 class="card-title">Khách hàng VIP</h2><p class="card-sub">Theo dõi khách mua nhiều để chăm sóc và gửi ưu đãi.</p><div id="vipCustomerList"></div></div>
+          <div class="app-card"><h2 class="card-title">Cảnh báo tồn kho</h2><p class="card-sub">Sản phẩm tồn dưới 10 nên nhập thêm.</p><div id="stockAlertList" style="margin-top:16px"></div></div>
+        </div>
+
+        <div class="report-grid" id="adminReport">
+          <div class="app-card"><h2 class="card-title">Báo cáo doanh thu</h2><p class="card-sub">Biểu đồ demo theo 6 tháng gần nhất.</p><div class="chart-demo" style="margin-top:20px"><span style="height:42%" data-label="T1"></span><span style="height:58%" data-label="T2"></span><span style="height:46%" data-label="T3"></span><span style="height:74%" data-label="T4"></span><span style="height:88%" data-label="T5"></span><span style="height:69%" data-label="T6"></span></div></div>
+          <div class="app-card"><h2 class="card-title">Thống kê bán chạy</h2><p class="card-sub">Top sản phẩm được khách hàng quan tâm.</p><div id="bestSellerList" style="margin-top:18px;display:flex;flex-direction:column;gap:12px"></div></div>
+        </div>
+
+        <div class="app-card" id="adminStaff">
+          <div class="card-head"><div><h2 class="card-title">Quản lý nhân viên</h2><p class="card-sub">Danh sách nhân sự demo theo phân quyền Owner / Admin / Staff.</p></div><button class="ghost-btn" onclick="showToast('👥 Demo: có thể mở rộng form thêm nhân viên ở bản backend.', 'info')">Thêm nhân viên</button></div>
+          <div class="staff-grid"><div class="staff-card"><div class="staff-dot">👑</div><div><b>Owner</b><div class="cart-small">Toàn quyền hệ thống & báo cáo</div></div></div><div class="staff-card"><div class="staff-dot">🛠️</div><div><b>Admin Demo</b><div class="cart-small">Quản lý sản phẩm, kho, nhân sự</div></div></div><div class="staff-card"><div class="staff-dot">🚚</div><div><b>Staff 01</b><div class="cart-small">Xác nhận đơn & cập nhật giao hàng</div></div></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="google-modal" id="googleModal">
+  <div class="google-box">
+    <button class="close-x" onclick="closeGoogleModal()">×</button>
+    <div class="google-logo">G</div>
+    <h2 class="card-title">Đăng nhập bằng Google</h2>
+    <p class="card-sub">Bản demo một file HTML mô phỏng chọn tài khoản Google để vào web app.</p>
+    <button class="google-account" onclick="loginWithGoogle('panda.customer@gmail.com','Panda Customer','🐼')"><span class="ga-avatar">🐼</span><span><b>Panda Customer</b><br/><span class="cart-small">panda.customer@gmail.com</span></span></button>
+    <button class="google-account" onclick="loginWithGoogle('rabbit.style@gmail.com','Rabbit Style','🐰')"><span class="ga-avatar">🐰</span><span><b>Rabbit Style</b><br/><span class="cart-small">rabbit.style@gmail.com</span></span></button>
+    <button class="google-account" onclick="loginWithGoogle('admin@styleshop.vn','Admin Google Demo','🦊')"><span class="ga-avatar">🦊</span><span><b>Admin Google Demo</b><br/><span class="cart-small">admin@styleshop.vn · mở trang quản trị</span></span></button>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     MODALS
-════════════════════════════════════════ -->
-<div class="modal-overlay" id="modal-add-product" onclick="closeModalOutside(event, 'modal-add-product')">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>Thêm sản phẩm mới</h3>
-      <div class="modal-close" onclick="closeModal('modal-add-product')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
-    </div>
-    <div class="modal-body">
-      <div class="form-row">
-        <div class="form-group"><label>Tên sản phẩm</label><input placeholder="Ví dụ: Áo thun cotton basic"></div>
-        <div class="form-group"><label>Mã sản phẩm</label><input placeholder="SP001"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Danh mục</label><select><option>Áo thun</option><option>Áo sơ mi</option><option>Quần jean</option><option>Váy</option><option>Hoodie</option><option>Đầm</option><option>Áo khoác</option><option>Phụ kiện</option></select></div>
-        <div class="form-group"><label>Giới tính</label><select><option>Nữ</option><option>Nam</option><option>Unisex</option></select></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Giá bán (₫)</label><input type="number" placeholder="285000"></div>
-        <div class="form-group"><label>Giá gốc / Giảm giá (₫)</label><input type="number" placeholder="Bỏ trống nếu không giảm"></div>
-      </div>
-      <div class="form-group"><label>Màu sắc (phân cách bằng dấu phẩy)</label><input placeholder="Trắng, Đen, Hồng"></div>
-      <div class="form-group"><label>Size (phân cách bằng dấu phẩy)</label><input placeholder="XS, S, M, L, XL"></div>
-      <div class="form-group"><label>Mô tả sản phẩm</label><textarea placeholder="Nhập mô tả..."></textarea></div>
-      <div class="form-group"><label>Ảnh sản phẩm</label><div style="border:2px dashed var(--border); border-radius:var(--radius-sm); padding:2rem; text-align:center; cursor:pointer; background:var(--rose-50);"><div style="color:var(--text-muted); font-size:0.85rem;">Kéo thả hoặc nhấp để tải ảnh lên</div><div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">PNG, JPG – Tỉ lệ 1:1 khuyến nghị</div></div></div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('modal-add-product')">Hủy</button>
-      <button class="btn btn-pink">Thêm sản phẩm</button>
-    </div>
+<div class="product-modal" id="productModal">
+  <div class="product-box" id="productModalBox"></div>
+</div>
+
+<div class="legal-modal" id="legalModal">
+  <div class="legal-box">
+    <button class="close-x" onclick="closeLegalModal()">×</button>
+    <div class="legal-tag" id="legalTag">StyleShop</div>
+    <div id="legalContent"></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-add-staff" onclick="closeModalOutside(event, 'modal-add-staff')">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>Thêm nhân viên</h3>
-      <div class="modal-close" onclick="closeModal('modal-add-staff')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
-    </div>
-    <div class="modal-body">
-      <div class="form-row">
-        <div class="form-group"><label>Họ và tên</label><input placeholder="Nguyễn Văn A"></div>
-        <div class="form-group"><label>Số điện thoại</label><input placeholder="0912 345 678"></div>
-      </div>
-      <div class="form-group"><label>Email đăng nhập</label><input type="email" placeholder="nhanvien@hexadev.vn"></div>
-      <div class="form-row">
-        <div class="form-group"><label>Mật khẩu tạm</label><input type="password" placeholder="Tối thiểu 8 ký tự"></div>
-        <div class="form-group"><label>Vai trò</label><select><option>Nhân viên</option><option>Quản lý</option></select></div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('modal-add-staff')">Hủy</button>
-      <button class="btn btn-pink">Tạo tài khoản</button>
-    </div>
-  </div>
-</div>
 
-<script src="js/script.js"></script>
+
+  <div class="toast" id="toast"></div>
+
+
+
+
 </body>
 </html>
