@@ -403,6 +403,58 @@
   ];
 
 
+
+  // V8: keep all product images embedded directly inside the HTML file.
+  // This version does not depend on an internet connection, so the images will always display.
+  function guessTypeFromProduct(p){
+    const n=(p.name||'').toLowerCase();
+    const c=(p.cat||'').toLowerCase();
+    if(c.includes('phụ')){
+      if(n.includes('tote')) return 'tote';
+      if(n.includes('đeo vai')||n.includes('bag')) return 'bag';
+      if(n.includes('balo')) return 'backpack';
+      if(n.includes('ví')) return 'wallet';
+      if(n.includes('bucket')) return 'hat';
+      if(n.includes('lưỡi trai')||n.includes('cap')||n.includes('mũ')) return 'cap';
+      if(n.includes('kính')) return 'glasses';
+      if(n.includes('thắt lưng')) return 'belt';
+      if(n.includes('giày')||n.includes('sandal')||n.includes('sneaker')) return 'shoes';
+      if(n.includes('kẹp tóc')) return 'hairclip';
+      if(n.includes('đồng hồ')) return 'watch';
+      if(n.includes('vớ')) return 'socks';
+      if(n.includes('khăn')) return 'scarf';
+      return 'bag';
+    }
+    if(c.includes('váy')){
+      if(n.includes('chân váy')||n.includes('tennis')) return 'skirt';
+      return 'dress';
+    }
+    if(c.includes('quần')){
+      if(n.includes('short')) return 'shorts';
+      return 'pants';
+    }
+    if(c.includes('áo')){
+      if(n.includes('hoodie')) return 'hoodie';
+      if(n.includes('polo')) return 'polo';
+      if(n.includes('sơ mi')||n.includes('shirt')||n.includes('blouse')) return 'shirt';
+      if(n.includes('blazer')||n.includes('vest')) return 'blazer';
+      if(n.includes('khoác')||n.includes('jacket')||n.includes('cardigan')||n.includes('bomber')) return 'jacket';
+      return 'tshirt';
+    }
+    return 'tshirt';
+  }
+  const EMBED_PRIMARY = ['#FFFFFF','#EEF7FF','#1F3A5F','#D1F5EE','#F6C6D1','#EEE1CC','#6B7280','#5F8DBB','#111827','#C9B79C','#F4E8D8','#EFD8C5'];
+  const EMBED_SECONDARY = ['#1BBFA0','#5DD6BC','#07705E','#FFD93D','#B08968','#D49A89','#78A7D8','#2E4A44','#C7A87D','#7A4E3A'];
+  function embeddedProductImageFromName(name,cat,id){
+    const type = guessTypeFromProduct({name,cat});
+    const seed = Math.abs(Number(id)||0);
+    const primary = EMBED_PRIMARY[seed % EMBED_PRIMARY.length];
+    const secondary = EMBED_SECONDARY[seed % EMBED_SECONDARY.length];
+    const shortLabel = String(name||cat||'StyleShop').slice(0,18);
+    return productImage(type, primary, secondary, shortLabel);
+  }
+  products = products.map((p,i)=>({...p, image: p.image || embeddedProductImageFromName(p.name,p.cat,p.id||i+1), imageSource:'Embedded SVG'}));
+
   function productVisual(p){
     return p.image ? `<img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy">` : `<span class="emoji">${p.emoji}</span>`;
   }
@@ -639,7 +691,7 @@
     const totalRevenue=orders.filter(o=>o.status!=='Đã hủy'&&o.status!=='Hủy đơn').reduce((s,o)=>s+o.total,0); const pending=orders.filter(o=>o.status==='Chờ xác nhận').length; const shipping=orders.filter(o=>o.status==='Đang giao').length; const stock=products.reduce((s,p)=>s+p.stock,0);
     [['statRevenue',money(totalRevenue)],['dropRevenue',money(totalRevenue)],['statPending',pending],['dropPending',pending],['statShipping',shipping],['statStock',stock]].forEach(([id,val])=>{ const el=document.getElementById(id); if(el) el.textContent=val; });
   };
-  function renderAdminProducts(){ const rows=document.getElementById('adminProductRows'); if(rows) rows.innerHTML=products.map(p=>`<tr><td>${p.image?`<img class="admin-product-thumb" src="${p.image}" alt="${p.name}">`:p.emoji} <b>${p.name}</b><div class="cart-small">${p.sku}</div></td><td>${p.cat}</td><td>${money(p.price)}</td><td class="${p.stock<10?'low-stock':''}">${p.stock<10?'⚠️ ':''}${p.stock}</td><td>${p.sold}</td><td><button class="mini-btn" onclick="editProduct(${p.id})">Sửa giá</button> <button class="mini-btn" onclick="deleteProduct(${p.id})">Xóa</button></td></tr>`).join(''); const best=document.getElementById('bestSellerList'); if(best) best.innerHTML=[...products].sort((a,b)=>b.sold-a.sold).slice(0,4).map((p,i)=>`<div class="cart-item"><div class="${visualClass(p,'cart-icon')}">${productMiniVisual(p)}</div><div><div class="cart-name">#${i+1} ${p.name}</div><div class="cart-small">Đã bán ${p.sold} · còn ${p.stock}</div></div><strong>${money(p.price)}</strong></div>`).join(''); }
+  function renderAdminProducts(){ const rows=document.getElementById('adminProductRows'); if(rows) rows.innerHTML=products.map(p=>`<tr><td>${p.image?`<img class="admin-product-thumb" src="${p.image}" alt="${p.name}">`:p.emoji} <b>${p.name}</b><div class="cart-small">${p.sku}</div></td><td>${p.cat}</td><td>${money(p.price)}</td><td class="${p.stock<10?'low-stock':''}">${p.stock<10?'⚠️ ':''}${p.stock}</td><td>${p.sold}</td><td><button class="mini-btn" onclick="editProduct(${p.id})">Sửa giá</button> <button class="mini-btn" onclick="changeProductImage(${p.id})">Đổi ảnh</button> <button class="mini-btn" onclick="deleteProduct(${p.id})">Xóa</button></td></tr>`).join(''); const best=document.getElementById('bestSellerList'); if(best) best.innerHTML=[...products].sort((a,b)=>b.sold-a.sold).slice(0,4).map((p,i)=>`<div class="cart-item"><div class="${visualClass(p,'cart-icon')}">${productMiniVisual(p)}</div><div><div class="cart-name">#${i+1} ${p.name}</div><div class="cart-small">Đã bán ${p.sold} · còn ${p.stock}</div></div><strong>${money(p.price)}</strong></div>`).join(''); }
   function nextStatus(status){ return {'Chờ xác nhận':'Đã xác nhận','Đã xác nhận':'Đang đóng gói','Đang đóng gói':'Đang giao','Đang giao':'Hoàn thành'}[status] || null; }
   function actionLabel(status){ return {'Chờ xác nhận':'Xác nhận đơn','Đã xác nhận':'Chuyển đóng gói','Đang đóng gói':'Bàn giao shipper','Đang giao':'Hoàn thành'}[status] || 'Đã xong'; }
   function adminOrderActions(o){ const next=nextStatus(o.status); if(o.status==='Hoàn thành'||o.status==='Đã hủy'||o.status==='Hủy đơn') return '<span class="cart-small">Không còn thao tác</span>'; return `<button class="mini-btn ${o.status==='Chờ xác nhận'?'action-confirm':'action-next'}" onclick="advanceOrder('${o.id}')">${actionLabel(o.status)}</button><button class="mini-btn action-cancel" onclick="cancelOrder('${o.id}')">Hủy có lý do</button>`; }
@@ -666,7 +718,58 @@
   window.cancelOrder=function(id){ const o=orders.find(x=>x.id===id); if(!o) return; if(o.status==='Hoàn thành') return showToast('⚠️ Đơn hoàn thành không thể hủy.', 'warn'); const reason=prompt('Nhập lý do hủy đơn ' + id, 'Khách yêu cầu hủy'); if(reason===null) return; o.status='Đã hủy'; o.cancelReason=reason||'Không ghi rõ'; o.history=[...(o.history||[]),'Hủy: '+o.cancelReason]; renderCustomerOrders(); renderAdmin(); showToast('🧾 Đã hủy đơn kèm lý do.', 'info'); };
   window.setOrderStatus=function(id,status){ const o=orders.find(x=>x.id===id); if(!o) return; o.status=status; o.history=[...(o.history||[]),status]; renderCustomerOrders(); renderAdmin(); showToast('✅ Đã cập nhật trạng thái đơn ' + id, 'success'); };
   window.simulateNewOrder=function(){ const names=['Mai Anh','Bảo Ngọc','Minh Khang','Gia Linh']; const p=products[Math.floor(Math.random()*products.length)]; const customer=names[Math.floor(Math.random()*names.length)]; orders.unshift({id:'SS'+Math.floor(1000+Math.random()*9000),customer,customerEmail:customer.toLowerCase().replace(' ','.')+'@gmail.com',items:`${p.name} x1`,total:p.price,status:'Chờ xác nhận',payment:'COD',address:'Địa chỉ khách demo',created:'Vừa xong',history:['Tạo đơn']}); renderCustomerOrders(); renderAdmin(); showToast('🔔 Có đơn hàng demo mới cần xử lý!', 'info'); };
-  window.addAdminProduct=function(){ const name=document.getElementById('newProductName')?.value.trim()||''; const cat=document.getElementById('newProductCat')?.value||'Áo'; const price=parseInt(document.getElementById('newProductPrice')?.value||'0',10); const stock=parseInt(document.getElementById('newProductStock')?.value||'0',10); if(!name||price<=0||stock<0) return showToast('⚠️ Nhập đủ tên, giá và tồn kho hợp lệ!', 'warn'); const emojiMap={Áo:'👕',Quần:'👖',Váy:'👗','Phụ kiện':'👜'}; const defaultImageMap={Áo:productImages.whiteTee,Quần:productImages.jeansFlower,Váy:productImages.dressRack,'Phụ kiện':productImages.toteFlat}; products.unshift({id:Date.now(),name,cat,price,stock,emoji:emojiMap[cat]||'👗',sold:0,tag:'Admin',rating:4.6,sku:'SS-NEW',size:'S · M · L',color:'Màu mới',image:defaultImageMap[cat]||productImages.whiteTee}); ['newProductName','newProductPrice','newProductStock'].forEach(id=>{const el=document.getElementById(id); if(el) el.value='';}); renderProducts(); renderAdmin(); showToast('✅ Đã thêm sản phẩm mới!', 'success'); };
+  let newAdminImageData = '';
+  window.previewNewProductImage=function(event){
+    const file = event?.target?.files?.[0];
+    if(!file) return;
+    if(!file.type.startsWith('image/')) return showToast('⚠️ Vui lòng chọn đúng file hình ảnh!', 'warn');
+    const reader = new FileReader();
+    reader.onload = function(){
+      newAdminImageData = reader.result;
+      const preview=document.getElementById('newProductImagePreview');
+      const title=document.getElementById('newProductImageTitle');
+      const sub=document.getElementById('newProductImageSub');
+      if(preview) preview.innerHTML = `<img src="${newAdminImageData}" alt="Ảnh sản phẩm mới">`;
+      if(title) title.textContent = file.name.length>20 ? file.name.slice(0,17)+'...' : file.name;
+      if(sub) sub.textContent = 'Ảnh đã sẵn sàng';
+      showToast('🖼️ Đã chọn ảnh sản phẩm.', 'success');
+    };
+    reader.readAsDataURL(file);
+  };
+  function resetNewProductImage(){
+    newAdminImageData='';
+    const input=document.getElementById('newProductImage'); if(input) input.value='';
+    const preview=document.getElementById('newProductImagePreview'); if(preview) preview.textContent='📷';
+    const title=document.getElementById('newProductImageTitle'); if(title) title.textContent='Chọn ảnh';
+    const sub=document.getElementById('newProductImageSub'); if(sub) sub.textContent='JPG, PNG, WEBP';
+  }
+  window.changeProductImage=function(id){
+    const p=products.find(x=>x.id===id); if(!p) return;
+    const input=document.createElement('input'); input.type='file'; input.accept='image/*';
+    input.onchange=function(){
+      const file=input.files?.[0]; if(!file) return;
+      if(!file.type.startsWith('image/')) return showToast('⚠️ File không phải hình ảnh!', 'warn');
+      const reader=new FileReader();
+      reader.onload=function(){ p.image=reader.result; p.imageSource='Admin upload'; renderProducts(); renderCart(); renderWishlist(); renderAdmin(); showToast('🖼️ Đã đổi ảnh cho '+p.name, 'success'); };
+      reader.readAsDataURL(file);
+    };
+    input.click();
+  };
+  window.addAdminProduct=function(){
+    const name=document.getElementById('newProductName')?.value.trim()||'';
+    const cat=document.getElementById('newProductCat')?.value||'Áo';
+    const price=parseInt(document.getElementById('newProductPrice')?.value||'0',10);
+    const stock=parseInt(document.getElementById('newProductStock')?.value||'0',10);
+    if(!name||price<=0||stock<0) return showToast('⚠️ Nhập đủ tên, giá và tồn kho hợp lệ!', 'warn');
+    const emojiMap={Áo:'👕',Quần:'👖',Váy:'👗','Phụ kiện':'👜'};
+    const newId=Date.now();
+    const uploadedImage = newAdminImageData || embeddedProductImageFromName(name, cat, newId);
+    products.unshift({id:newId,name,cat,price,stock,emoji:emojiMap[cat]||'👗',sold:0,tag:newAdminImageData?'Admin upload':'Admin',rating:4.6,sku:'SS-NEW-'+String(newId).slice(-4),size:'S · M · L',color:'Màu mới',image:uploadedImage,imageSource:newAdminImageData?'Admin upload':'Embedded SVG'});
+    ['newProductName','newProductPrice','newProductStock'].forEach(id=>{const el=document.getElementById(id); if(el) el.value='';});
+    resetNewProductImage();
+    renderProducts(); renderAdmin();
+    showToast('✅ Đã thêm sản phẩm mới kèm ảnh!', 'success');
+  };
   window.editProduct=function(id){ const p=products.find(x=>x.id===id); if(!p) return; const newPrice=prompt('Nhập giá mới cho '+p.name,p.price); if(newPrice===null) return; const v=parseInt(newPrice,10); if(!v||v<=0) return showToast('⚠️ Giá không hợp lệ!', 'warn'); p.price=v; renderProducts(); renderCart(); renderAdmin(); showToast('✏️ Đã cập nhật giá sản phẩm.', 'success'); };
   window.deleteProduct=function(id){ products=products.filter(p=>p.id!==id); cart=cart.filter(i=>i.id!==id); wishlist=wishlist.filter(x=>x!==id); renderProducts(); renderCart(); renderWishlist(); renderAdmin(); showToast('🗑️ Đã xóa sản phẩm khỏi demo.', 'info'); };
   window.restockAll=function(){ products.forEach(p=>p.stock+=5); renderProducts(); renderAdmin(); showToast('📦 Đã nhập thêm 5 sản phẩm cho mỗi mặt hàng.', 'success'); };

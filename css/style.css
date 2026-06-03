@@ -1,3 +1,5 @@
+
+
     :root {
       --mint: #1BBFA0;
       --mint-light: #5DD6BC;
@@ -983,4 +985,48 @@ button,input,select,textarea{font-family:'Lora', Georgia, serif;}
 .shop-policy-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0 0;}
 .shop-policy-strip div{background:var(--surface);border:1px solid rgba(27,191,160,.12);border-radius:14px;padding:10px;font-size:.82rem;color:var(--text-mid);}
 @media(max-width:720px){.shop-policy-strip{grid-template-columns:1fr 1fr}.legal-box{padding:22px}.product-visual{height:160px}}
+
+
+
+/* ═══════════════════════════════════
+   V7: REALISTIC PRODUCT PHOTOS + ADMIN IMAGE UPLOAD
+═══════════════════════════════════ */
+.product-visual.has-img{
+  height:230px;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fffd 100%);
+  padding:10px;
+  border-bottom:1px solid rgba(27,191,160,.10);
+}
+.product-img{
+  width:100%;height:100%;object-fit:cover;border-radius:18px;background:#fff;
+  box-shadow:inset 0 0 0 1px rgba(27,191,160,.08);
+}
+.product-modal-visual.has-img{background:#fff;padding:10px;border-radius:22px;}
+.product-modal-visual .product-img-modal{border-radius:18px;object-fit:cover;background:#fff;}
+.admin-product-thumb{width:48px;height:48px;border-radius:14px;object-fit:cover;background:#fff;box-shadow:0 5px 14px rgba(13,153,128,.12);}
+.admin-product-create{
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(232,250,246,.70));
+  border:1px solid rgba(27,191,160,.16);border-radius:24px;padding:18px;margin-bottom:18px;
+  box-shadow:0 10px 30px rgba(13,153,128,.06);
+}
+.create-product-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px;}
+.create-product-head b{font-size:1rem;color:var(--text-dark);}
+.create-product-head span{display:block;margin-top:4px;font-size:.80rem;color:var(--text-muted);line-height:1.5;}
+.admin-form.pro-product-form{display:grid;grid-template-columns:1.2fr .72fr .72fr .58fr 1fr auto;gap:12px;align-items:end;margin-bottom:0;}
+.form-field{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.form-field label{font-size:.76rem;font-weight:900;color:var(--teal-deeper);letter-spacing:.2px;}
+.form-field input,.form-field select{height:46px;}
+.image-picker-card{height:46px;border:1.5px dashed rgba(27,191,160,.34);border-radius:14px;background:#fff;display:flex;align-items:center;gap:10px;padding:7px 10px;cursor:pointer;transition:all .2s;min-width:0;}
+.image-picker-card:hover{border-color:var(--mint);background:var(--mint-bg);transform:translateY(-1px);}
+.image-picker-thumb{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--mint-bg),#fff);display:grid;place-items:center;overflow:hidden;border:1px solid rgba(27,191,160,.12);flex:0 0 auto;}
+.image-picker-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.image-picker-text{min-width:0;line-height:1.15;}
+.image-picker-text b{display:block;font-size:.78rem;color:var(--text-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.image-picker-text span{display:block;font-size:.68rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;}
+.image-clear-btn{border:none;background:#fff1f2;color:#be123c;border:1px solid #fecdd3;border-radius:12px;height:46px;padding:0 10px;font-weight:900;cursor:pointer;}
+.image-clear-btn:hover{background:#ffe4e6;transform:translateY(-1px);}
+.create-product-tip{margin-top:12px;color:var(--text-muted);font-size:.78rem;line-height:1.55;display:flex;gap:8px;align-items:flex-start;}
+.online-photo-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(27,191,160,.18);background:#fff;border-radius:999px;padding:6px 10px;color:var(--teal-dark);font-size:.72rem;font-weight:900;white-space:nowrap;}
+@media(max-width:1180px){.admin-form.pro-product-form{grid-template-columns:1fr 1fr 1fr}.admin-form.pro-product-form .pill-btn{grid-column:auto}.admin-product-create{padding:16px}}
+@media(max-width:720px){.admin-form.pro-product-form{grid-template-columns:1fr}.create-product-head{flex-direction:column}.image-clear-btn{width:100%}}
 

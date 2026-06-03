@@ -6,7 +6,6 @@
   <title>StyleShop – Hệ Thống Quản Lý Cửa Hàng Quần Áo | The Hexadev</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
-  
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -1123,7 +1122,21 @@
 
         <div class="app-card" id="adminProducts">
           <div class="card-head"><div><h2 class="card-title">Kho sản phẩm</h2><p class="card-sub">Thêm, sửa giá, xóa sản phẩm, theo dõi tồn kho thấp và nhập kho nhanh.</p></div><button class="ghost-btn" onclick="restockAll()">Nhập kho +5</button></div>
-          <div class="admin-form"><input id="newProductName" placeholder="Tên sản phẩm"/><select id="newProductCat"><option>Áo</option><option>Quần</option><option>Váy</option><option>Phụ kiện</option></select><input id="newProductPrice" placeholder="Giá" type="number"/><input id="newProductStock" placeholder="Tồn" type="number"/><button class="pill-btn" onclick="addAdminProduct()">Thêm</button></div>
+          <div class="admin-product-create">
+            <div class="create-product-head">
+              <div><b>Thêm sản phẩm mới</b><span>Admin có thể nhập thông tin cơ bản và tải ảnh quần áo từ máy tính. Nếu không chọn ảnh, hệ thống tự lấy ảnh mẫu online phù hợp với tên sản phẩm.</span></div>
+              <span class="online-photo-badge">🖼️ Ảnh thật / ảnh tải lên</span>
+            </div>
+            <div class="admin-form pro-product-form">
+              <div class="form-field"><label>Tên sản phẩm</label><input id="newProductName" placeholder="VD: Áo sơ mi trắng cổ đức"/></div>
+              <div class="form-field"><label>Danh mục</label><select id="newProductCat"><option>Áo</option><option>Quần</option><option>Váy</option><option>Phụ kiện</option></select></div>
+              <div class="form-field"><label>Giá bán</label><input id="newProductPrice" placeholder="VD: 299000" type="number"/></div>
+              <div class="form-field"><label>Tồn kho</label><input id="newProductStock" placeholder="VD: 20" type="number"/></div>
+              <div class="form-field"><label>Ảnh sản phẩm</label><label class="image-picker-card" for="newProductImage"><span class="image-picker-thumb" id="newProductImagePreview">📷</span><span class="image-picker-text"><b id="newProductImageTitle">Chọn ảnh</b><span id="newProductImageSub">JPG, PNG, WEBP</span></span></label><input id="newProductImage" type="file" accept="image/*" style="display:none" onchange="previewNewProductImage(event)"/></div>
+              <button class="pill-btn" onclick="addAdminProduct()">➕ Thêm</button>
+            </div>
+            <div class="create-product-tip"><span>💡</span><span>Gợi ý: dùng ảnh nền trắng, rõ sản phẩm, tỉ lệ dọc 4:5 để card sản phẩm nhìn đồng bộ như shop thật. Bản demo lưu ảnh trong phiên hiện tại, tải lại trang sẽ trở về dữ liệu mẫu.</span></div>
+          </div>
           <div class="table-wrap"><table class="app-table"><thead><tr><th>Sản phẩm</th><th>Danh mục</th><th>Giá</th><th>Tồn</th><th>Đã bán</th><th>Thao tác</th></tr></thead><tbody id="adminProductRows"></tbody></table></div>
         </div>
 
@@ -1175,7 +1188,7 @@
   <div class="toast" id="toast"></div>
 
 
-
 <script src="js/script.js"></script>
+
 </body>
 </html>
